@@ -25,6 +25,7 @@ Explore every route, find AICTE colleges, ask questions and get your resume ATS-
 ![Python](https://img.shields.io/badge/Python_3.11-3776AB?logo=python&logoColor=white)
 ![Tests](https://img.shields.io/badge/tests-47_passing-22c55e)
 ![AI](https://img.shields.io/badge/AI-Gemini_%7C_Groq_%7C_OpenAI-8b5cf6)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
 <br />
 
@@ -307,3 +308,7 @@ docs/         architecture and screenshots
 ## 🙏 Data sources
 
 AICTE · O*NET (U.S. Department of Labor, CC BY 4.0) · Hugging Face `batuhanmtl/job-skill-set` · roadmap.sh · official portals of NTA, UGC, Ministry of Education, Maharashtra CET Cell, PCI and DGT.
+
+## 📄 License
+
+Released under the [MIT License](LICENSE).

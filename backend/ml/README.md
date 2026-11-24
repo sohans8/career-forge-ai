@@ -1,7 +1,7 @@
-# Career Copilot ML Experimentation & Model Baseline
+# Career Forge AI ML Experimentation & Model Baseline
 
 ## Overview
-This directory contains the machine learning experiment pipeline for **Career Copilot Phase 1**.
+This directory contains the machine learning experiment pipeline for **Career Forge AI Phase 1**.
 It transitions the system from a pure domain-rule baseline toward a data-driven ML recommendation framework.
 
 ## Data Inspection & Sufficiency Analysis

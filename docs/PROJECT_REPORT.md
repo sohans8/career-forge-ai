@@ -1,6 +1,6 @@
-# Career Copilot — Full Project Report
+# Career Forge AI — Full Project Report
 
-**Project:** Career Copilot — AI-Powered Career Recommendation System  
+**Project:** Career Forge AI — AI-Powered Career Recommendation System  
 **Version:** 1.0.0 (Phase 1)  
 **Repository:** https://github.com/sohans8/AI-career-copilot-major-  
 **Branch:** feature/backend-api  
@@ -30,7 +30,7 @@
 
 ## 1. Project Overview
 
-Career Copilot is a full-stack AI/ML-powered web application designed to help Class 10 students decide which academic stream to choose for Class 11–12. It is a critical decision that determines a student's university options and career trajectory.
+Career Forge AI is a full-stack AI/ML-powered web application designed to help Class 10 students decide which academic stream to choose for Class 11–12. It is a critical decision that determines a student's university options and career trajectory.
 
 The system takes a student's favourite subjects, key skills, and areas of interest as input, runs them through a hybrid rule + machine learning engine, and returns:
 
@@ -52,7 +52,7 @@ Most students make this decision based on:
 - Score-based shortlisting without preference alignment
 - Limited access to career counseling
 
-Career Copilot addresses this by providing a data-driven, personalized, explainable recommendation that factors in a student's actual interests, skills, and subject preferences — not just marks.
+Career Forge AI addresses this by providing a data-driven, personalized, explainable recommendation that factors in a student's actual interests, skills, and subject preferences — not just marks.
 
 ---
 
@@ -172,7 +172,7 @@ All data lives in `backend/data/raw/career_copilot_expanded_dataset/`.
 
 ### Entry Point: `backend/app/main.py`
 
-- FastAPI app with title "Career Copilot API", version 1.0.0
+- FastAPI app with title "Career Forge AI API", version 1.0.0
 - CORS middleware configured with `allow_origins=["*"]` to allow Netlify and any frontend origin
 - Routes: `recommendation_router` mounted at `/api/v1`
 - Health check at `GET /api/v1/health` → `{"status": "ok"}`
@@ -472,7 +472,7 @@ python -m uvicorn backend.app.main:app --reload --host 127.0.0.1 --port 8000
 | Commit | Description |
 |---|---|
 | `8367571` | Remove node_modules from tracking, add frontend .gitignore |
-| `2e2992f` | Add comprehensive README for Career Copilot |
+| `2e2992f` | Add comprehensive README for Career Forge AI |
 | `7ba8198` | Complete UI redesign — dark glassmorphism, animated score ring, step assessment |
 | `db2f545` | Fix requirements.txt — replace non-existent package versions with real stable versions |
 | `b677049` | Update README — fix backend run commands, reflect UI redesign |

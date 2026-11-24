@@ -1,10 +1,10 @@
-# Career Copilot — Project Info
+# Career Forge AI — Project Info
 
 ## Project Details
 
 | Field | Info |
 |---|---|
-| Project Name | Career Copilot |
+| Project Name | Career Forge AI |
 | Version | 1.0.0 (Phase 1) |
 | Type | AI/ML Web Application |
 | Target Users | Class 10 Students |

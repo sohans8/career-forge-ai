@@ -13,7 +13,6 @@ dist/
 # Generated / local-only data
 backend/data/rag_index/
 backend/data/*.bak
-_t.txt
 
 # Large raw source datasets (rebuild derived files with: python -m backend.scripts.fetch_datasets --force)
 backend/data/abilities.csv
