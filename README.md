@@ -564,6 +564,4 @@ AICTE · O*NET (U.S. Department of Labor, CC BY 4.0) · Hugging Face `batuhanmtl
 
 Released under the [MIT License](LICENSE).
 
-## 👤 Author
 
-Built by **Soham** ([@sohamrp172-sys](https://github.com/sohamrp172-sys)). See all [contributors](https://github.com/sohans8/career-forge-ai/graphs/contributors).
