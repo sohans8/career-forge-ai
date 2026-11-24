@@ -23,7 +23,7 @@ Explore every route, find AICTE colleges, ask questions and get your resume ATS-
 ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-0ea5e9?logo=tailwindcss&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
 ![Python](https://img.shields.io/badge/Python_3.11-3776AB?logo=python&logoColor=white)
-![Tests](https://img.shields.io/badge/tests-44_passing-22c55e)
+![Tests](https://img.shields.io/badge/tests-46_passing-22c55e)
 ![AI](https://img.shields.io/badge/AI-Gemini_%7C_Groq_%7C_OpenAI-8b5cf6)
 
 <br />
@@ -170,7 +170,7 @@ flowchart LR
 
 - **Roadmap:** a checked JSON graph of education steps, each linked to its official source.
 - **Careers:** ranked by interest fit (45%), strengths (20%), goal (20%) and stream (15%).
-- **Mentor:** finds the most relevant policy passages and answers with them. If the AI provider is down, it still answers from the documents.
+- **Mentor:** finds the most relevant policy passages and answers with them. If one AI provider fails it tries the next, and if a model is retired it switches to a current one. If no AI is reachable, it still answers from the documents.
 - **Resume:** a transparent rule-based score. AI only improves the wording.
 
 <details>
@@ -232,7 +232,7 @@ Try them live at [/docs](https://career-copilot-api-lw76.onrender.com/docs).
 | `GROQ_API_KEY` | not set | Groq key |
 | `OPENAI_API_KEY` | not set | OpenAI key |
 | `LLM_PROVIDER` | `auto` | `auto` uses the first key it finds. Set `gemini`, `groq` or `openai` to choose one |
-| `GEMINI_MODEL` | `gemini-2.0-flash` | Gemini model |
+| `GEMINI_MODEL` | `gemini-2.0-flash` | Starting Gemini model. If the provider retires it, the app switches to a current one automatically |
 | `GROQ_MODEL` | `llama-3.3-70b-versatile` | Groq model |
 | `OPENAI_MODEL` | `gpt-4o-mini` | OpenAI model |
 | `LLM_TIMEOUT_SECONDS` | `45` | How long to wait for the AI |
@@ -269,7 +269,7 @@ python -m backend.scripts.update_education_data --apply backend/data/staged_patc
 <br />
 
 ```bash
-python -m pytest backend/tests -q     # 44 tests, no internet or keys needed
+python -m pytest backend/tests -q     # 46 tests, no internet or keys needed
 cd frontend && npm run build
 ```
 
@@ -288,7 +288,7 @@ backend/
   data/       datasets and schema
   scripts/    data building, checking and the weekly watcher
   ml/         Class 10 stream recommender model
-  tests/      44 tests
+  tests/      46 tests
 frontend/src/
   pages/      Dashboard, Roadmap, Mentor, Resume
   components/ Wizard, chat, sidebar, header

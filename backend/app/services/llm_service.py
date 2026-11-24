@@ -20,6 +20,9 @@ log = logging.getLogger("career_forge.llm")
 GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 OPENAI_URL = "https://api.openai.com/v1/chat/completions"
+GEMINI_MODELS_URL = "https://generativelanguage.googleapis.com/v1beta/models"
+GROQ_MODELS_URL = "https://api.groq.com/openai/v1/models"
+OPENAI_MODELS_URL = "https://api.openai.com/v1/models"
 
 
 class LLMError(RuntimeError):
@@ -48,9 +51,16 @@ class LLMService:
     def available(self) -> bool:
         return self.provider() is not None
 
+    def __init__(self) -> None:
+        self._resolved: dict[str, str] = {}  # provider -> model found by discovery after a retirement
+
+    def model_for(self, provider: str) -> str:
+        configured = {"gemini": settings.gemini_model, "groq": settings.groq_model, "openai": settings.openai_model}[provider]
+        return self._resolved.get(provider, configured)
+
     def model_name(self) -> str | None:
         p = self.provider()
-        return {"gemini": settings.gemini_model, "groq": settings.groq_model, "openai": settings.openai_model}.get(p or "")
+        return self.model_for(p) if p else None
 
     last_error: str | None = None  # short, key-free description of the most recent failure
 
@@ -68,10 +78,7 @@ class LLMService:
         errors = []
         for provider in providers:  # fall back to the next configured provider on failure
             try:
-                if provider == "gemini":
-                    text = self._gemini(messages, system, json_mode, temperature)
-                else:
-                    text = self._openai_compatible(provider, messages, system, json_mode, temperature)
+                text = self._call_with_model_recovery(provider, messages, system, json_mode, temperature)
                 self.used_provider = provider
                 self.last_error = "; ".join(errors) or None  # earlier providers that failed, if any
                 return text
@@ -91,8 +98,48 @@ class LLMService:
         text = self.chat([Message("user", prompt)], system=system, json_mode=True, temperature=0.2)
         return parse_json_object(text)
 
+    # -- model recovery ----------------------------------------------------
+    def _send(self, provider, model, messages, system, json_mode, temperature) -> str:
+        if provider == "gemini":
+            return self._gemini(messages, system, json_mode, temperature, model=model)
+        return self._openai_compatible(provider, messages, system, json_mode, temperature, model=model)
+
+    def _call_with_model_recovery(self, provider, messages, system, json_mode, temperature) -> str:
+        """Call the provider; if its model was retired, switch to a currently available one and retry once."""
+        model = self.model_for(provider)
+        try:
+            return self._send(provider, model, messages, system, json_mode, temperature)
+        except httpx.HTTPStatusError as exc:
+            if not _is_model_error(exc.response):
+                raise
+            replacement = self._discover_model(provider, exclude=model)
+            if not replacement:
+                raise
+            log.warning("LLM model %s/%s unavailable, switching to %s", provider, model, replacement)
+            self._resolved[provider] = replacement
+            return self._send(provider, replacement, messages, system, json_mode, temperature)
+
+    def _discover_model(self, provider: str, exclude: str = "") -> str | None:
+        """Ask the provider which chat models exist now and pick a sensible one."""
+        try:
+            if provider == "gemini":
+                r = httpx.get(GEMINI_MODELS_URL, headers={"x-goog-api-key": settings.gemini_api_key},
+                              params={"pageSize": 200}, timeout=settings.llm_timeout)
+                r.raise_for_status()
+                names = [m["name"].split("/", 1)[-1] for m in r.json().get("models", [])
+                         if "generateContent" in m.get("supportedGenerationMethods", [])]
+            else:
+                url, key = (GROQ_MODELS_URL, settings.groq_api_key) if provider == "groq" else (OPENAI_MODELS_URL, settings.openai_api_key)
+                r = httpx.get(url, headers={"Authorization": f"Bearer {key}"}, timeout=settings.llm_timeout)
+                r.raise_for_status()
+                names = [m["id"] for m in r.json().get("data", []) if m.get("active", True)]
+        except (httpx.HTTPError, ValueError, KeyError) as exc:
+            log.warning("Model discovery failed for %s: %s", provider, type(exc).__name__)
+            return None
+        return pick_model(provider, [n for n in names if n != exclude])
+
     # -- providers ---------------------------------------------------------
-    def _gemini(self, messages, system, json_mode, temperature) -> str:
+    def _gemini(self, messages, system, json_mode, temperature, model=None) -> str:
         body: dict = {
             "contents": [{"role": "model" if m.role == "assistant" else "user", "parts": [{"text": m.content}]} for m in messages],
             "generationConfig": {"temperature": temperature},
@@ -101,7 +148,7 @@ class LLMService:
             body["systemInstruction"] = {"parts": [{"text": system}]}
         if json_mode:
             body["generationConfig"]["responseMimeType"] = "application/json"
-        r = httpx.post(GEMINI_URL.format(model=settings.gemini_model), json=body,
+        r = httpx.post(GEMINI_URL.format(model=model or self.model_for("gemini")), json=body,
                        headers={"x-goog-api-key": settings.gemini_api_key}, timeout=settings.llm_timeout)
         r.raise_for_status()
         try:
@@ -109,11 +156,9 @@ class LLMService:
         except (KeyError, IndexError) as exc:
             raise LLMError("Unexpected Gemini response") from exc
 
-    def _openai_compatible(self, provider, messages, system, json_mode, temperature) -> str:
-        url, key, model = (
-            (GROQ_URL, settings.groq_api_key, settings.groq_model) if provider == "groq"
-            else (OPENAI_URL, settings.openai_api_key, settings.openai_model)
-        )
+    def _openai_compatible(self, provider, messages, system, json_mode, temperature, model=None) -> str:
+        url, key = (GROQ_URL, settings.groq_api_key) if provider == "groq" else (OPENAI_URL, settings.openai_api_key)
+        model = model or self.model_for(provider)
         msgs = ([{"role": "system", "content": system}] if system else []) + [{"role": m.role, "content": m.content} for m in messages]
         body: dict = {"model": model, "messages": msgs, "temperature": temperature}
         if json_mode:
@@ -124,6 +169,43 @@ class LLMService:
             return r.json()["choices"][0]["message"]["content"]
         except (KeyError, IndexError) as exc:
             raise LLMError("Unexpected response") from exc
+
+
+def _is_model_error(response: httpx.Response) -> bool:
+    """True when the provider rejected the model name (retired, renamed or not allowed)."""
+    if response.status_code == 404:
+        return True
+    if response.status_code in (400, 403):
+        text = _error_detail(response).lower()
+        return "model" in text and any(w in text for w in ("not found", "no longer", "does not exist", "decommission", "deprecat", "not supported"))
+    return False
+
+
+_SKIP = ("embed", "embedding", "whisper", "tts", "audio", "image", "vision-only", "guard", "moderation", "aqa",
+         "imagen", "veo", "live", "transcribe", "realtime", "search", "computer-use", "robotics", "nano", "gemma")
+
+
+def _version(name: str) -> tuple:
+    return tuple(int(n) for n in re.findall(r"\d+", name)[:3]) or (0,)
+
+
+def pick_model(provider: str, names: list[str]) -> str | None:
+    """Choose a fast, general chat model from a provider's live model list."""
+    pool = [n for n in names if not any(s in n.lower() for s in _SKIP)]
+    stable = [n for n in pool if not any(t in n.lower() for t in ("preview", "exp", "experimental"))] or pool
+    if provider == "gemini":
+        ranked = ([n for n in stable if "flash" in n and "lite" not in n]
+                  or [n for n in stable if "flash" in n] or stable)
+        aliases = [n for n in ranked if n.endswith("-latest")]
+        return aliases[0] if aliases else (max(ranked, key=_version) if ranked else None)
+    if provider == "groq":
+        for want in (("llama", "versatile"), ("llama", "70b"), ("gpt-oss", "120b"), ("llama",), ("qwen",), ("gpt-oss",)):
+            hits = [n for n in stable if all(w in n.lower() for w in want)]
+            if hits:
+                return max(hits, key=_version)
+        return stable[0] if stable else None
+    hits = [n for n in stable if n.startswith("gpt-") and "mini" in n] or [n for n in stable if n.startswith("gpt-")]
+    return max(hits, key=_version) if hits else None
 
 
 def _error_detail(response: httpx.Response) -> str:

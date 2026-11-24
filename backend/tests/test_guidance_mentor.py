@@ -115,9 +115,42 @@ def test_llm_all_providers_fail_gives_offline_answer(client, monkeypatch):
         raise _http_error(404, "model not found")
 
     monkeypatch.setattr(mod.LLMService, "_gemini", bad)
+    monkeypatch.setattr(mod.LLMService, "_discover_model", lambda self, provider, exclude="": None)
     b = client.post("/api/mentor/chat", json={"message": "What is DSE?", "node_id": "ad_dse"}).json()
     assert b["llm_used"] is False and "did not respond" in b["reply"] and "no LLM API key" not in b["reply"]
     assert "gemini: HTTP 404" in client.get("/api/status").json()["llm"]["last_error"]
+
+
+def test_retired_model_is_replaced_automatically(monkeypatch):
+    from backend.app.services import llm_service as mod
+    monkeypatch.setenv("GEMINI_API_KEY", "AIzaFAKE")
+    svc = mod.LLMService()
+    calls = []
+
+    def send(provider, model, *a):
+        calls.append(model)
+        if model == "gemini-2.0-flash":
+            raise _http_error(404, "This model models/gemini-2.0-flash is no longer available.")
+        return f"answer from {model}"
+
+    monkeypatch.setattr(svc, "_send", send)
+    monkeypatch.setattr(svc, "_discover_model", lambda provider, exclude="": "gemini-9.9-flash")
+    assert svc.chat([mod.Message("user", "hi")]) == "answer from gemini-9.9-flash"
+    assert svc.model_name() == "gemini-9.9-flash" and svc.last_error is None
+    svc.chat([mod.Message("user", "again")])
+    assert calls == ["gemini-2.0-flash", "gemini-9.9-flash", "gemini-9.9-flash"]  # remembered, no second failure
+
+
+def test_pick_model_prefers_current_general_chat_models():
+    from backend.app.services.llm_service import pick_model
+    gemini = ["gemini-2.5-flash", "gemini-3.8-flash", "gemini-3.8-flash-lite", "gemini-3.8-pro", "text-embedding-004",
+              "gemini-3.9-flash-preview", "gemini-2.5-flash-image"]
+    assert pick_model("gemini", gemini) == "gemini-3.8-flash"
+    assert pick_model("gemini", gemini + ["gemini-flash-latest"]) == "gemini-flash-latest"
+    groq = ["whisper-large-v3", "llama-guard-4-12b", "llama-4.1-70b-versatile", "llama-3.1-8b-instant", "openai/gpt-oss-120b"]
+    assert pick_model("groq", groq) == "llama-4.1-70b-versatile"
+    assert pick_model("groq", ["whisper-large-v3", "openai/gpt-oss-120b"]) == "openai/gpt-oss-120b"
+    assert pick_model("openai", ["gpt-4o", "gpt-5-mini", "gpt-4o-mini", "text-embedding-3-small"]) == "gpt-5-mini"
 
 
 def test_status_and_health(client):
