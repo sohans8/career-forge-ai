@@ -114,6 +114,6 @@ No change reaches `roadmaps_india.json` without a human approving it in a pull r
 |---|---|---|---|
 | Frontend | Netlify (`netlify.toml`, Node 20), redeploys on push | `npm run build` in `frontend/` | static `dist/`, SPA redirect to `index.html` |
 | Frontend mirror | GitHub Pages (`gh-pages` branch) | `npx vite build --base=/career-forge-ai/` in `frontend/` | static files, `404.html` copy of `index.html` |
-| Backend | Render free tier (`render.yaml`, Python 3.11.9 from `.python-version`) | `pip install -r backend/requirements.txt` | `python -m uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT`, health check `/api/v1/health` |
+| Backend | Render free tier (`render.yaml`, Python 3.11 from `.python-version`) | `pip install -r backend/requirements.txt` | `python -m uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT`, health check `/api/v1/health` |
 
 The derived datasets are committed, so no data fetch happens at deploy time. The RAG index is built on the first mentor request after a deploy. Render's free tier sleeps when idle, so the first request can take 30 to 60 seconds.
