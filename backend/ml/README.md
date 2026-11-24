@@ -1,62 +1,74 @@
-# Career Forge AI ML Experimentation & Model Baseline
+# Career Forge AI: Class 10 stream recommender (ML)
 
 ## Overview
-This directory contains the machine learning experiment pipeline for **Career Forge AI Phase 1**.
-It transitions the system from a pure domain-rule baseline toward a data-driven ML recommendation framework.
 
-## Data Inspection & Sufficiency Analysis
-- **Raw Catalog Dataset (ackend/data/raw/)**: Contains catalog definitions (105 subjects, 76 skills, 59 interests, 12 streams, 104 courses, 200 careers) and 1,250 domain rule pairs.
-- **Data Sufficiency Determination**: Raw catalog files alone do **NOT** contain real-world student interaction logs or labeled student outcomes. stream_recommendation_rules.csv represents domain knowledge, NOT ground-truth student performance.
-- **Synthetic Profile Strategy**: A transparent synthetic profile generator (ml/data/generate_synthetic_dataset.py) samples student profiles across 12 domain archetypes with controlled cross-domain noise.
+This folder holds the machine learning pipeline behind the Class 10 stream recommender (`POST /api/v1/recommend`). It extends the domain rule engine with a data-driven model and combines the two in a hybrid.
 
-## Dataset Schema (synthetic_student_dataset.csv)
-| Column Name | Type | Description |
+## Data inspection and sufficiency
+
+- **Catalogue data (`backend/data/raw/career_copilot_expanded_dataset/`):** 105 subjects, 76 skills, 59 interests, 12 streams, 104 courses, 200 careers and 1,250 domain rule pairs.
+- **Sufficiency:** the catalogue files do **not** contain real student interaction logs or labelled outcomes. `stream_recommendation_rules.csv` is domain knowledge, not ground truth.
+- **Synthetic profiles:** a transparent generator (`ml/data/generate_synthetic_dataset.py`) samples student profiles from 12 domain archetypes with controlled cross-domain noise.
+
+## Dataset schema (`synthetic_student_dataset.csv`)
+
+| Column | Type | Description |
 | :--- | :--- | :--- |
-| student_id | String | Unique student profile ID (e.g. STU0001) |
-| student_name | String | Synthetic student profile name |
-| subjects | String | Semicolon-separated list of selected favourite subjects |
-| skills | String | Semicolon-separated list of selected skills |
-| interests | String | Semicolon-separated list of selected interests |
-| 	arget_stream_id | String | Target stream class label (S01 to S12) |
-| 	arget_broad_pathway | String | Broad pathway category (Science, Commerce, Humanities, Other) |
-| rchetype | String | Name of domain archetype used for transparent sampling |
+| `student_id` | String | Unique profile ID (for example `STU0001`) |
+| `student_name` | String | Synthetic student name |
+| `subjects` | String | Semicolon-separated favourite subjects |
+| `skills` | String | Semicolon-separated skills |
+| `interests` | String | Semicolon-separated interests |
+| `target_stream_id` | String | Target stream label (`S01` to `S12`) |
+| `target_broad_pathway` | String | Broad pathway (Science, Commerce, Humanities, Other) |
+| `archetype` | String | Domain archetype used for sampling |
 
-## Feature Representation & Encoding
-Student profiles are represented using **Multi-Hot Binary Feature Encoding**:
-- **Subjects Vocabulary**: 105 binary features ({\\text{subj}} \\in \\{0, 1\\}^{105}$)
-- **Skills Vocabulary**: 76 binary features ({\\text{sk}} \\in \\{0, 1\\}^{76}$)
-- **Interests Vocabulary**: 59 binary features ({\\text{int}} \\in \\{0, 1\\}^{59}$)
-- **Total Feature Vector Dimension**:  + 76 + 59 = 240$ binary features per profile.
+## Feature representation
 
-## Classifiers & Modeling
-- **Primary Recommended Model**: **Logistic Regression** (sklearn.linear_model.LogisticRegression). Ideal for sparse multi-hot binary vectors, fast training/inference, zero deep learning overhead, and direct probability output.
-- **Alternative Tree Model**: **Random Forest Classifier** (sklearn.ensemble.RandomForestClassifier).
+Each profile is encoded as a **multi-hot binary vector**:
 
-## Train / Test Data Separation
-- **Total Generated Dataset**: 600 synthetic profiles across 12 stream archetypes.
-- **Stratified Split**: 80% Train split (480 samples), 20% Held-out Test split (120 samples saved to ml/data/held_out_test_set.csv).
-- **Strict Preprocessing Order**: Multi-hot vectorizer vocabulary is fitted strictly on training data.
+- **Subjects:** 105 binary features
+- **Skills:** 76 binary features
+- **Interests:** 59 binary features
+- **Total:** 105 + 76 + 59 = **240 binary features** per profile
 
-## Evaluation Metrics & Framework
-- **Top-1 Accuracy**: Exact target match rate.
-- **Top-3 Accuracy**: Target inclusion in top 3 stream recommendations (Emphasized for career counseling flexibility).
-- **Macro F1-Score**: Unweighted average F1 across all 12 stream classes.
+## Models
 
-### Held-Out Test Set Benchmark Results (N=120)
-| System / Model | Top-1 Accuracy | Top-3 Accuracy | Macro F1 Score |
+- **Primary model:** Logistic Regression (`sklearn.linear_model.LogisticRegression`), calibrated. It suits sparse multi-hot vectors, trains and predicts quickly, and outputs probabilities directly.
+- **Alternative:** Random Forest (`sklearn.ensemble.RandomForestClassifier`).
+- **Hybrid (used in production):** `score = w_rule × rule_score + w_ml × (probability × 100)`, with `w_rule = 0.85, w_ml = 0.15` for sparse inputs and `0.50 / 0.50` for complete profiles.
+
+## Train / test split
+
+- **Dataset:** 600 synthetic profiles across 12 stream archetypes.
+- **Stratified split:** 80% training (480 profiles), 20% held-out test (120 profiles, saved to `ml/data/held_out_test_set.csv`).
+- **No leakage:** the multi-hot vocabulary is fitted on training data only.
+
+## Evaluation
+
+- **Top-1 accuracy:** exact match with the target stream.
+- **Top-3 accuracy:** target appears in the top 3 recommendations (important for counselling, where students compare options).
+- **Macro F1:** unweighted average F1 across the 12 streams.
+
+### Held-out test results (N = 120)
+
+| System | Top-1 accuracy | Top-3 accuracy | Macro F1 |
 | :--- | :---: | :---: | :---: |
-| **System A: Rule Engine Baseline** | 91.67% | 100.00% | 91.68% |
-| **System B: Pure ML (Logistic Regression)** | 100.00% | 100.00% | 100.00% |
-| **System C: Hybrid Ensemble (Rule + ML)** | 100.00% | 100.00% | 100.00% |
+| Rule engine baseline | 91.67% | 100.00% | 91.68% |
+| Logistic Regression | 100.00% | 100.00% | 100.00% |
+| Hybrid (rule + ML) | 100.00% | 100.00% | 100.00% |
 
-## Execution Commands
-`ash
-# Generate synthetic dataset
+The 100% scores reflect clean synthetic data. The robustness study in `ml/robustness/` shows accuracy falling to about 80% at 30% input noise. Real-world accuracy needs real student data to measure.
+
+## Commands
+
+```bash
+# Generate the synthetic dataset
 python ml/data/generate_synthetic_dataset.py
 
-# Train models and save train/test splits
+# Train the models and save the train/test split
 python ml/train.py
 
-# Evaluate all candidate systems on held-out test split
+# Evaluate every system on the held-out test set
 python ml/evaluate.py
-`
+```
