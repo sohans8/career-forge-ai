@@ -195,7 +195,7 @@ curl -X POST https://career-copilot-api-9591.onrender.com/api/mentor/chat \
 
 | What | When | Where |
 |---|---|---|
-| **CI**: dataset validation, 38 backend tests, a server smoke test and the frontend production build | Every push and pull request | `.github/workflows/ci.yml` |
+| **CI**: dataset validation, 42 backend tests, a server smoke test and the frontend production build | Every push and pull request | `.github/workflows/ci.yml` |
 | **Education data sync**: watch official portals, collect PDFs, stage patches, reindex, open a PR | Mondays 03:30 UTC, or manually | `.github/workflows/auto_sync_education.yml` |
 | **Backend deploy** | On push to the branch the Render service tracks (`feature/backend-api` in `render.yaml`) | `render.yaml`, `.python-version` |
 | **Frontend deploy** | On push, once the repo is connected to a Netlify site | `netlify.toml` |
@@ -236,7 +236,7 @@ Frontend: `VITE_API_BASE_URL` (default `https://career-copilot-api-9591.onrender
 ## Testing
 
 ```bash
-python -m pytest backend/tests -q        # 38 tests, no network or keys needed
+python -m pytest backend/tests -q        # 42 tests, no network or keys needed
 python -m backend.scripts.validate_data
 cd frontend && npm run build
 ```

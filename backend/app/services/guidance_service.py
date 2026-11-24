@@ -145,6 +145,7 @@ class GuidanceService:
             title_l = c["title"].lower()
             goal_hit = 1.0 if goal_tokens and any(t in title_l for t in goal_tokens) else 0.0
             fit = 1.0 if c["soc"].startswith(fit_prefixes) else 0.0
+            riasec = min(max(riasec, 0.0), 1.0)
             scored.append((0.45 * riasec + 0.2 * strength + 0.2 * goal_hit + 0.15 * fit, c, riasec, strength))
         scored.sort(key=lambda x: -x[0])
         top = scored[:6]

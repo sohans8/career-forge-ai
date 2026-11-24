@@ -28,6 +28,23 @@ def test_recommend_diploma_student(client):
     assert b["top_careers"][0]["match"] >= b["top_careers"][-1]["match"]
 
 
+@pytest.mark.parametrize("stage,stream,interests,strengths,goal", [
+    ("after_10th", "science_pcm", ["R", "I", "A"], ["programming", "problem_solving"], "mechanical engineer"),
+    ("after_12th", "science_pcm", ["R", "I"], ["programming"], "civil engineer"),
+    ("after_diploma", "dip_mech", ["R", "C", "I"], ["problem_solving"], "automotive engineering technician"),
+])
+def test_match_percent_stays_within_0_and_100(client, stage, stream, interests, strengths, goal):
+    b = client.post("/api/guidance/recommend", json={"stage": stage, "stream": stream, "interests": interests,
+                                                     "strengths": strengths, "career_goal": goal}).json()
+    assert all(0 <= c["match"] <= 100 for c in b["top_careers"]), [c["match"] for c in b["top_careers"]]
+
+
+def test_onet_riasec_values_are_normalised():
+    from backend.app.services.guidance_service import guidance_service
+    values = [v for c in guidance_service.careers() for v in c["riasec"].values()]
+    assert values and 0.0 <= min(values) and max(values) <= 1.0
+
+
 def test_recommend_validates_input(client):
     assert client.post("/api/guidance/recommend", json={"stage": "bad"}).status_code == 422
     r = client.post("/api/guidance/recommend", json={"stage": "after_10th"})

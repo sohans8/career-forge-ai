@@ -166,7 +166,8 @@ def build_onet(force: bool) -> None:
         for soc, name, val in zip(ints["O*NET-SOC Code"], ints["Element Name"], ints["Data Value"]):
             key = {v: k for k, v in RIASEC.items()}.get(name)
             if key:
-                riasec[soc][key] = round(float(val) / 5.0, 3)
+                # O*NET occupational interests use a 1-7 scale; map it onto 0-1.
+                riasec[soc][key] = round(min(max((float(val) - 1.0) / 6.0, 0.0), 1.0), 3)
         skills = pd.read_csv(skl_f)
         skills = skills[skills["Scale ID"] == "IM"].sort_values("Data Value", ascending=False)
         top_skills = skills.groupby("O*NET-SOC Code")["Element Name"].apply(lambda s: list(s.head(8))).to_dict()
