@@ -100,7 +100,6 @@ Explore every route, find AICTE colleges, ask questions and get your resume ATS-
 | ⚙️ **API** | https://career-copilot-api-9591.onrender.com |
 | 📘 **API docs** | https://career-copilot-api-9591.onrender.com/docs |
 | ❤️ **Health check** | https://career-copilot-api-9591.onrender.com/api/v1/health |
-| 🕘 Previous Netlify address | https://dhruvsisodiya.netlify.app |
 
 > [!NOTE]
 > The API runs on Render's free plan. It sleeps after about 15 minutes without visitors, so the first visit after that can take up to a minute. After that it is fast.
