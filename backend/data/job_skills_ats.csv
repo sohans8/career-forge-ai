@@ -1,0 +1,430 @@
+role,skill,weight,source
+Business Development,communication,0.941,kaggle:job-skill-set (local)
+Business Development,problem solving,0.707,kaggle:job-skill-set (local)
+Business Development,adaptability,0.561,kaggle:job-skill-set (local)
+Business Development,business development,0.464,kaggle:job-skill-set (local)
+Business Development,relationship building,0.435,kaggle:job-skill-set (local)
+Business Development,teamwork,0.431,kaggle:job-skill-set (local)
+Business Development,time management,0.297,kaggle:job-skill-set (local)
+Business Development,sales,0.293,kaggle:job-skill-set (local)
+Business Development,negotiation,0.272,kaggle:job-skill-set (local)
+Business Development,data analysis,0.255,kaggle:job-skill-set (local)
+Business Development,presentation skills,0.251,kaggle:job-skill-set (local)
+Business Development,collaboration,0.234,kaggle:job-skill-set (local)
+Business Development,interpersonal skills,0.222,kaggle:job-skill-set (local)
+Business Development,market analysis,0.213,kaggle:job-skill-set (local)
+Business Development,team collaboration,0.197,kaggle:job-skill-set (local)
+Business Development,project management,0.188,kaggle:job-skill-set (local)
+Business Development,organizational skills,0.184,kaggle:job-skill-set (local)
+Business Development,lead generation,0.18,kaggle:job-skill-set (local)
+Business Development,leadership,0.18,kaggle:job-skill-set (local)
+Business Development,customer relationship management,0.172,kaggle:job-skill-set (local)
+Business Development,networking,0.167,kaggle:job-skill-set (local)
+Business Development,self-motivation,0.155,kaggle:job-skill-set (local)
+Business Development,market research,0.142,kaggle:job-skill-set (local)
+Business Development,strategic thinking,0.138,kaggle:job-skill-set (local)
+Business Development,customer service,0.13,kaggle:job-skill-set (local)
+Business Development,creativity,0.121,kaggle:job-skill-set (local)
+Business Development,attention to detail,0.113,kaggle:job-skill-set (local)
+Business Development,account management,0.113,kaggle:job-skill-set (local)
+Business Development,crm software,0.109,kaggle:job-skill-set (local)
+Business Development,salesforce,0.105,kaggle:job-skill-set (local)
+Business Development,b2b sales,0.096,kaggle:job-skill-set (local)
+Business Development,strategic planning,0.088,kaggle:job-skill-set (local)
+Business Development,initiative,0.084,kaggle:job-skill-set (local)
+Business Development,microsoft office,0.084,kaggle:job-skill-set (local)
+Business Development,independence,0.079,kaggle:job-skill-set (local)
+Business Development,marketing,0.079,kaggle:job-skill-set (local)
+Business Development,analytical skills,0.079,kaggle:job-skill-set (local)
+Business Development,client relationship management,0.079,kaggle:job-skill-set (local)
+Business Development,cold calling,0.079,kaggle:job-skill-set (local)
+Business Development,relationship management,0.071,kaggle:job-skill-set (local)
+Business Development,customer focus,0.071,kaggle:job-skill-set (local)
+Business Development,motivation,0.071,kaggle:job-skill-set (local)
+Business Development,crm,0.067,kaggle:job-skill-set (local)
+Business Development,microsoft office suite,0.063,kaggle:job-skill-set (local)
+Business Development,sales strategy,0.059,kaggle:job-skill-set (local)
+Business Development,financial analysis,0.059,kaggle:job-skill-set (local)
+Business Development,organization,0.054,kaggle:job-skill-set (local)
+Business Development,flexibility,0.05,kaggle:job-skill-set (local)
+Business Development,sales strategies,0.05,kaggle:job-skill-set (local)
+Business Development,microsoft word,0.05,kaggle:job-skill-set (local)
+Business Development,microsoft excel,0.05,kaggle:job-skill-set (local)
+Business Development,consultative selling,0.05,kaggle:job-skill-set (local)
+Business Development,crm systems,0.05,kaggle:job-skill-set (local)
+Business Development,prospecting,0.05,kaggle:job-skill-set (local)
+Business Development,proposal development,0.046,kaggle:job-skill-set (local)
+Business Development,contract negotiation,0.046,kaggle:job-skill-set (local)
+Business Development,results-oriented,0.042,kaggle:job-skill-set (local)
+Business Development,multi-tasking,0.042,kaggle:job-skill-set (local)
+Business Development,goal-oriented,0.042,kaggle:job-skill-set (local)
+Business Development,coaching,0.042,kaggle:job-skill-set (local)
+Finance,communication,0.936,kaggle:job-skill-set (local)
+Finance,problem solving,0.784,kaggle:job-skill-set (local)
+Finance,teamwork,0.496,kaggle:job-skill-set (local)
+Finance,financial analysis,0.458,kaggle:job-skill-set (local)
+Finance,adaptability,0.445,kaggle:job-skill-set (local)
+Finance,leadership,0.441,kaggle:job-skill-set (local)
+Finance,collaboration,0.407,kaggle:job-skill-set (local)
+Finance,financial reporting,0.386,kaggle:job-skill-set (local)
+Finance,data analysis,0.297,kaggle:job-skill-set (local)
+Finance,attention to detail,0.292,kaggle:job-skill-set (local)
+Finance,budgeting,0.292,kaggle:job-skill-set (local)
+Finance,accounting,0.258,kaggle:job-skill-set (local)
+Finance,time management,0.242,kaggle:job-skill-set (local)
+Finance,interpersonal skills,0.233,kaggle:job-skill-set (local)
+Finance,organizational skills,0.229,kaggle:job-skill-set (local)
+Finance,financial modeling,0.22,kaggle:job-skill-set (local)
+Finance,project management,0.216,kaggle:job-skill-set (local)
+Finance,forecasting,0.199,kaggle:job-skill-set (local)
+Finance,analytical skills,0.182,kaggle:job-skill-set (local)
+Finance,strategic thinking,0.182,kaggle:job-skill-set (local)
+Finance,analytical thinking,0.153,kaggle:job-skill-set (local)
+Finance,excel,0.144,kaggle:job-skill-set (local)
+Finance,microsoft excel,0.136,kaggle:job-skill-set (local)
+Finance,finance,0.123,kaggle:job-skill-set (local)
+Finance,relationship building,0.11,kaggle:job-skill-set (local)
+Finance,presentation skills,0.106,kaggle:job-skill-set (local)
+Finance,accounting principles,0.089,kaggle:job-skill-set (local)
+Finance,reporting,0.085,kaggle:job-skill-set (local)
+Finance,team management,0.085,kaggle:job-skill-set (local)
+Finance,customer service,0.085,kaggle:job-skill-set (local)
+Finance,risk management,0.085,kaggle:job-skill-set (local)
+Finance,team collaboration,0.081,kaggle:job-skill-set (local)
+Finance,mentoring,0.081,kaggle:job-skill-set (local)
+Finance,negotiation,0.081,kaggle:job-skill-set (local)
+Finance,strategic planning,0.076,kaggle:job-skill-set (local)
+Finance,cash flow management,0.076,kaggle:job-skill-set (local)
+Finance,financial forecasting,0.076,kaggle:job-skill-set (local)
+Finance,independence,0.076,kaggle:job-skill-set (local)
+Finance,financial management,0.072,kaggle:job-skill-set (local)
+Finance,critical thinking,0.072,kaggle:job-skill-set (local)
+Finance,sql,0.068,kaggle:job-skill-set (local)
+Finance,cpa,0.068,kaggle:job-skill-set (local)
+Finance,gaap,0.064,kaggle:job-skill-set (local)
+Finance,sap,0.064,kaggle:job-skill-set (local)
+Finance,detail-oriented,0.059,kaggle:job-skill-set (local)
+Finance,internal controls,0.059,kaggle:job-skill-set (local)
+Finance,process improvement,0.059,kaggle:job-skill-set (local)
+Finance,financial planning,0.059,kaggle:job-skill-set (local)
+Finance,budget management,0.055,kaggle:job-skill-set (local)
+Finance,initiative,0.055,kaggle:job-skill-set (local)
+Finance,data analytics,0.051,kaggle:job-skill-set (local)
+Finance,variance analysis,0.051,kaggle:job-skill-set (local)
+Finance,powerpoint,0.051,kaggle:job-skill-set (local)
+Finance,microsoft office,0.051,kaggle:job-skill-set (local)
+Finance,accounts payable,0.051,kaggle:job-skill-set (local)
+Finance,power bi,0.047,kaggle:job-skill-set (local)
+Finance,microsoft office suite,0.047,kaggle:job-skill-set (local)
+Finance,microsoft powerpoint,0.047,kaggle:job-skill-set (local)
+Finance,relationship management,0.047,kaggle:job-skill-set (local)
+Finance,cost accounting,0.047,kaggle:job-skill-set (local)
+Hr,communication,0.941,kaggle:job-skill-set (local)
+Hr,problem solving,0.777,kaggle:job-skill-set (local)
+Hr,employee relations,0.464,kaggle:job-skill-set (local)
+Hr,adaptability,0.464,kaggle:job-skill-set (local)
+Hr,teamwork,0.459,kaggle:job-skill-set (local)
+Hr,interpersonal skills,0.45,kaggle:job-skill-set (local)
+Hr,attention to detail,0.368,kaggle:job-skill-set (local)
+Hr,performance management,0.359,kaggle:job-skill-set (local)
+Hr,data analysis,0.345,kaggle:job-skill-set (local)
+Hr,leadership,0.327,kaggle:job-skill-set (local)
+Hr,collaboration,0.314,kaggle:job-skill-set (local)
+Hr,organizational skills,0.286,kaggle:job-skill-set (local)
+Hr,time management,0.264,kaggle:job-skill-set (local)
+Hr,confidentiality,0.241,kaggle:job-skill-set (local)
+Hr,relationship building,0.232,kaggle:job-skill-set (local)
+Hr,recruitment,0.223,kaggle:job-skill-set (local)
+Hr,benefits administration,0.205,kaggle:job-skill-set (local)
+Hr,conflict resolution,0.195,kaggle:job-skill-set (local)
+Hr,onboarding,0.191,kaggle:job-skill-set (local)
+Hr,compliance,0.191,kaggle:job-skill-set (local)
+Hr,project management,0.164,kaggle:job-skill-set (local)
+Hr,customer service,0.159,kaggle:job-skill-set (local)
+Hr,hris,0.159,kaggle:job-skill-set (local)
+Hr,change management,0.155,kaggle:job-skill-set (local)
+Hr,talent acquisition,0.15,kaggle:job-skill-set (local)
+Hr,microsoft office,0.145,kaggle:job-skill-set (local)
+Hr,human resources management,0.145,kaggle:job-skill-set (local)
+Hr,microsoft office suite,0.145,kaggle:job-skill-set (local)
+Hr,training and development,0.141,kaggle:job-skill-set (local)
+Hr,recruiting,0.136,kaggle:job-skill-set (local)
+Hr,coaching,0.136,kaggle:job-skill-set (local)
+Hr,analytical skills,0.105,kaggle:job-skill-set (local)
+Hr,strategic thinking,0.105,kaggle:job-skill-set (local)
+Hr,flexibility,0.105,kaggle:job-skill-set (local)
+Hr,integrity,0.1,kaggle:job-skill-set (local)
+Hr,hr management,0.095,kaggle:job-skill-set (local)
+Hr,employment law,0.095,kaggle:job-skill-set (local)
+Hr,policy development,0.091,kaggle:job-skill-set (local)
+Hr,talent management,0.086,kaggle:job-skill-set (local)
+Hr,hris systems,0.086,kaggle:job-skill-set (local)
+Hr,creativity,0.082,kaggle:job-skill-set (local)
+Hr,professionalism,0.082,kaggle:job-skill-set (local)
+Hr,initiative,0.082,kaggle:job-skill-set (local)
+Hr,multi-tasking,0.077,kaggle:job-skill-set (local)
+Hr,empathy,0.077,kaggle:job-skill-set (local)
+Hr,payroll processing,0.073,kaggle:job-skill-set (local)
+Hr,organizational development,0.073,kaggle:job-skill-set (local)
+Hr,payroll administration,0.073,kaggle:job-skill-set (local)
+Hr,payroll management,0.068,kaggle:job-skill-set (local)
+Hr,human resources,0.068,kaggle:job-skill-set (local)
+Hr,negotiation,0.068,kaggle:job-skill-set (local)
+Hr,problem-solving,0.068,kaggle:job-skill-set (local)
+Hr,employee engagement,0.064,kaggle:job-skill-set (local)
+Hr,microsoft excel,0.064,kaggle:job-skill-set (local)
+Hr,compensation management,0.064,kaggle:job-skill-set (local)
+Hr,critical thinking,0.059,kaggle:job-skill-set (local)
+Hr,cultural awareness,0.059,kaggle:job-skill-set (local)
+Hr,strategic planning,0.059,kaggle:job-skill-set (local)
+Hr,background checks,0.055,kaggle:job-skill-set (local)
+Hr,workforce planning,0.055,kaggle:job-skill-set (local)
+Information Technology,communication,0.912,kaggle:job-skill-set (local)
+Information Technology,problem solving,0.796,kaggle:job-skill-set (local)
+Information Technology,adaptability,0.467,kaggle:job-skill-set (local)
+Information Technology,teamwork,0.421,kaggle:job-skill-set (local)
+Information Technology,collaboration,0.367,kaggle:job-skill-set (local)
+Information Technology,project management,0.35,kaggle:job-skill-set (local)
+Information Technology,leadership,0.287,kaggle:job-skill-set (local)
+Information Technology,customer service,0.275,kaggle:job-skill-set (local)
+Information Technology,time management,0.237,kaggle:job-skill-set (local)
+Information Technology,attention to detail,0.212,kaggle:job-skill-set (local)
+Information Technology,troubleshooting,0.192,kaggle:job-skill-set (local)
+Information Technology,interpersonal skills,0.163,kaggle:job-skill-set (local)
+Information Technology,organizational skills,0.15,kaggle:job-skill-set (local)
+Information Technology,documentation,0.129,kaggle:job-skill-set (local)
+Information Technology,technical support,0.125,kaggle:job-skill-set (local)
+Information Technology,data analysis,0.113,kaggle:job-skill-set (local)
+Information Technology,analytical skills,0.108,kaggle:job-skill-set (local)
+Information Technology,active directory,0.104,kaggle:job-skill-set (local)
+Information Technology,budget management,0.092,kaggle:job-skill-set (local)
+Information Technology,risk management,0.083,kaggle:job-skill-set (local)
+Information Technology,vendor management,0.079,kaggle:job-skill-set (local)
+Information Technology,networking,0.079,kaggle:job-skill-set (local)
+Information Technology,negotiation,0.075,kaggle:job-skill-set (local)
+Information Technology,relationship building,0.075,kaggle:job-skill-set (local)
+Information Technology,problem-solving,0.071,kaggle:job-skill-set (local)
+Information Technology,strategic thinking,0.067,kaggle:job-skill-set (local)
+Information Technology,presentation skills,0.067,kaggle:job-skill-set (local)
+Information Technology,team collaboration,0.062,kaggle:job-skill-set (local)
+Information Technology,critical thinking,0.062,kaggle:job-skill-set (local)
+Information Technology,jira,0.062,kaggle:job-skill-set (local)
+Information Technology,it management,0.062,kaggle:job-skill-set (local)
+Information Technology,team management,0.062,kaggle:job-skill-set (local)
+Information Technology,stakeholder management,0.062,kaggle:job-skill-set (local)
+Information Technology,sharepoint,0.058,kaggle:job-skill-set (local)
+Information Technology,strategic planning,0.058,kaggle:job-skill-set (local)
+Information Technology,analytical thinking,0.058,kaggle:job-skill-set (local)
+Information Technology,independence,0.058,kaggle:job-skill-set (local)
+Information Technology,change management,0.054,kaggle:job-skill-set (local)
+Information Technology,network security,0.054,kaggle:job-skill-set (local)
+Information Technology,team leadership,0.054,kaggle:job-skill-set (local)
+Information Technology,cybersecurity,0.054,kaggle:job-skill-set (local)
+Information Technology,data management,0.054,kaggle:job-skill-set (local)
+Information Technology,information technology,0.05,kaggle:job-skill-set (local)
+Information Technology,self-motivation,0.05,kaggle:job-skill-set (local)
+Information Technology,mentoring,0.05,kaggle:job-skill-set (local)
+Information Technology,sql,0.05,kaggle:job-skill-set (local)
+Information Technology,flexibility,0.046,kaggle:job-skill-set (local)
+Information Technology,network administration,0.046,kaggle:job-skill-set (local)
+Information Technology,software installation,0.046,kaggle:job-skill-set (local)
+Information Technology,organization,0.046,kaggle:job-skill-set (local)
+Information Technology,office 365,0.046,kaggle:job-skill-set (local)
+Information Technology,microsoft office suite,0.046,kaggle:job-skill-set (local)
+Information Technology,disaster recovery planning,0.046,kaggle:job-skill-set (local)
+Information Technology,operating systems,0.042,kaggle:job-skill-set (local)
+Information Technology,motivation,0.042,kaggle:job-skill-set (local)
+Information Technology,pmp certification,0.042,kaggle:job-skill-set (local)
+Information Technology,agile,0.042,kaggle:job-skill-set (local)
+Information Technology,desktop support,0.042,kaggle:job-skill-set (local)
+Information Technology,prioritization,0.037,kaggle:job-skill-set (local)
+Information Technology,hardware support,0.037,kaggle:job-skill-set (local)
+Sales,communication,0.948,kaggle:job-skill-set (local)
+Sales,problem solving,0.698,kaggle:job-skill-set (local)
+Sales,teamwork,0.634,kaggle:job-skill-set (local)
+Sales,adaptability,0.582,kaggle:job-skill-set (local)
+Sales,customer service,0.517,kaggle:job-skill-set (local)
+Sales,sales,0.332,kaggle:job-skill-set (local)
+Sales,time management,0.315,kaggle:job-skill-set (local)
+Sales,relationship building,0.293,kaggle:job-skill-set (local)
+Sales,customer relationship management,0.19,kaggle:job-skill-set (local)
+Sales,product knowledge,0.19,kaggle:job-skill-set (local)
+Sales,interpersonal skills,0.181,kaggle:job-skill-set (local)
+Sales,negotiation,0.172,kaggle:job-skill-set (local)
+Sales,leadership,0.159,kaggle:job-skill-set (local)
+Sales,self-motivation,0.155,kaggle:job-skill-set (local)
+Sales,flexibility,0.151,kaggle:job-skill-set (local)
+Sales,organizational skills,0.147,kaggle:job-skill-set (local)
+Sales,inventory management,0.138,kaggle:job-skill-set (local)
+Sales,collaboration,0.138,kaggle:job-skill-set (local)
+Sales,presentation skills,0.134,kaggle:job-skill-set (local)
+Sales,positive attitude,0.125,kaggle:job-skill-set (local)
+Sales,attention to detail,0.108,kaggle:job-skill-set (local)
+Sales,motivation,0.099,kaggle:job-skill-set (local)
+Sales,market analysis,0.095,kaggle:job-skill-set (local)
+Sales,merchandising,0.095,kaggle:job-skill-set (local)
+Sales,creativity,0.095,kaggle:job-skill-set (local)
+Sales,business development,0.091,kaggle:job-skill-set (local)
+Sales,sales management,0.078,kaggle:job-skill-set (local)
+Sales,project management,0.078,kaggle:job-skill-set (local)
+Sales,crm software,0.078,kaggle:job-skill-set (local)
+Sales,data analysis,0.073,kaggle:job-skill-set (local)
+Sales,lead generation,0.073,kaggle:job-skill-set (local)
+Sales,visual merchandising,0.073,kaggle:job-skill-set (local)
+Sales,independence,0.073,kaggle:job-skill-set (local)
+Sales,customer focus,0.073,kaggle:job-skill-set (local)
+Sales,team collaboration,0.073,kaggle:job-skill-set (local)
+Sales,organization,0.069,kaggle:job-skill-set (local)
+Sales,salesforce,0.069,kaggle:job-skill-set (local)
+Sales,microsoft office,0.069,kaggle:job-skill-set (local)
+Sales,sales techniques,0.06,kaggle:job-skill-set (local)
+Sales,account management,0.06,kaggle:job-skill-set (local)
+Sales,b2b sales,0.06,kaggle:job-skill-set (local)
+Sales,sales experience,0.056,kaggle:job-skill-set (local)
+Sales,computer skills,0.056,kaggle:job-skill-set (local)
+Sales,marketing,0.056,kaggle:job-skill-set (local)
+Sales,cash handling,0.056,kaggle:job-skill-set (local)
+Sales,market research,0.056,kaggle:job-skill-set (local)
+Sales,customer engagement,0.052,kaggle:job-skill-set (local)
+Sales,multitasking,0.052,kaggle:job-skill-set (local)
+Sales,strategic thinking,0.052,kaggle:job-skill-set (local)
+Sales,team leadership,0.047,kaggle:job-skill-set (local)
+Sales,coaching,0.047,kaggle:job-skill-set (local)
+Sales,professionalism,0.047,kaggle:job-skill-set (local)
+Sales,analytical skills,0.047,kaggle:job-skill-set (local)
+Sales,problem-solving,0.047,kaggle:job-skill-set (local)
+Sales,accountability,0.047,kaggle:job-skill-set (local)
+Sales,retail experience,0.047,kaggle:job-skill-set (local)
+Sales,goal-oriented,0.047,kaggle:job-skill-set (local)
+Sales,self-starter,0.043,kaggle:job-skill-set (local)
+Sales,valid driver's license,0.043,kaggle:job-skill-set (local)
+Sales,pos systems,0.043,kaggle:job-skill-set (local)
+Software Developer,data structures,1.0,curated
+Software Developer,algorithms,1.0,curated
+Software Developer,git,1.0,curated
+Software Developer,python,1.0,curated
+Software Developer,java,1.0,curated
+Software Developer,sql,1.0,curated
+Software Developer,rest api,1.0,curated
+Software Developer,oop,1.0,curated
+Software Developer,debugging,1.0,curated
+Software Developer,docker,0.6,curated
+Software Developer,unit testing,0.6,curated
+Software Developer,linux,0.6,curated
+Software Developer,agile,0.6,curated
+Software Developer,ci/cd,0.6,curated
+Software Developer,system design,0.6,curated
+Full Stack Developer,html,1.0,curated
+Full Stack Developer,css,1.0,curated
+Full Stack Developer,javascript,1.0,curated
+Full Stack Developer,react,1.0,curated
+Full Stack Developer,node.js,1.0,curated
+Full Stack Developer,sql,1.0,curated
+Full Stack Developer,rest api,1.0,curated
+Full Stack Developer,git,1.0,curated
+Full Stack Developer,typescript,0.6,curated
+Full Stack Developer,mongodb,0.6,curated
+Full Stack Developer,docker,0.6,curated
+Full Stack Developer,authentication,0.6,curated
+Full Stack Developer,deployment,0.6,curated
+Full Stack Developer,tailwind css,0.6,curated
+AI/ML Engineer,python,1.0,curated
+AI/ML Engineer,machine learning,1.0,curated
+AI/ML Engineer,numpy,1.0,curated
+AI/ML Engineer,pandas,1.0,curated
+AI/ML Engineer,scikit-learn,1.0,curated
+AI/ML Engineer,statistics,1.0,curated
+AI/ML Engineer,deep learning,1.0,curated
+AI/ML Engineer,tensorflow,0.6,curated
+AI/ML Engineer,pytorch,0.6,curated
+AI/ML Engineer,nlp,0.6,curated
+AI/ML Engineer,computer vision,0.6,curated
+AI/ML Engineer,mlops,0.6,curated
+AI/ML Engineer,docker,0.6,curated
+AI/ML Engineer,sql,0.6,curated
+Data Scientist,python,1.0,curated
+Data Scientist,sql,1.0,curated
+Data Scientist,statistics,1.0,curated
+Data Scientist,pandas,1.0,curated
+Data Scientist,machine learning,1.0,curated
+Data Scientist,data visualization,1.0,curated
+Data Scientist,excel,1.0,curated
+Data Scientist,tableau,0.6,curated
+Data Scientist,power bi,0.6,curated
+Data Scientist,a/b testing,0.6,curated
+Data Scientist,feature engineering,0.6,curated
+Data Scientist,scikit-learn,0.6,curated
+Data Analyst,sql,1.0,curated
+Data Analyst,excel,1.0,curated
+Data Analyst,data visualization,1.0,curated
+Data Analyst,python,1.0,curated
+Data Analyst,statistics,1.0,curated
+Data Analyst,power bi,1.0,curated
+Data Analyst,tableau,0.6,curated
+Data Analyst,dashboards,0.6,curated
+Data Analyst,data cleaning,0.6,curated
+Data Analyst,reporting,0.6,curated
+Mechanical Engineer,autocad,1.0,curated
+Mechanical Engineer,solidworks,1.0,curated
+Mechanical Engineer,thermodynamics,1.0,curated
+Mechanical Engineer,manufacturing processes,1.0,curated
+Mechanical Engineer,cad,1.0,curated
+Mechanical Engineer,mechanics,1.0,curated
+Mechanical Engineer,ansys,0.6,curated
+Mechanical Engineer,catia,0.6,curated
+Mechanical Engineer,gd&t,0.6,curated
+Mechanical Engineer,plc,0.6,curated
+Mechanical Engineer,quality control,0.6,curated
+Mechanical Engineer,six sigma,0.6,curated
+Civil Engineer,autocad,1.0,curated
+Civil Engineer,surveying,1.0,curated
+Civil Engineer,structural analysis,1.0,curated
+Civil Engineer,estimation and costing,1.0,curated
+Civil Engineer,construction management,1.0,curated
+Civil Engineer,staad.pro,0.6,curated
+Civil Engineer,revit,0.6,curated
+Civil Engineer,primavera,0.6,curated
+Civil Engineer,quantity surveying,0.6,curated
+Civil Engineer,site supervision,0.6,curated
+Electrical Engineer,circuit analysis,1.0,curated
+Electrical Engineer,power systems,1.0,curated
+Electrical Engineer,electrical machines,1.0,curated
+Electrical Engineer,plc,1.0,curated
+Electrical Engineer,autocad electrical,1.0,curated
+Electrical Engineer,matlab,0.6,curated
+Electrical Engineer,scada,0.6,curated
+Electrical Engineer,control systems,0.6,curated
+Electrical Engineer,protection systems,0.6,curated
+Electrical Engineer,motor control,0.6,curated
+Electronics Engineer,analog electronics,1.0,curated
+Electronics Engineer,digital electronics,1.0,curated
+Electronics Engineer,embedded systems,1.0,curated
+Electronics Engineer,microcontrollers,1.0,curated
+Electronics Engineer,pcb design,1.0,curated
+Electronics Engineer,arduino,0.6,curated
+Electronics Engineer,raspberry pi,0.6,curated
+Electronics Engineer,c programming,0.6,curated
+Electronics Engineer,vhdl,0.6,curated
+Electronics Engineer,iot,0.6,curated
+Electronics Engineer,matlab,0.6,curated
+Finance / Accounting,accounting,1.0,curated
+Finance / Accounting,excel,1.0,curated
+Finance / Accounting,financial reporting,1.0,curated
+Finance / Accounting,taxation,1.0,curated
+Finance / Accounting,gst,1.0,curated
+Finance / Accounting,tally,1.0,curated
+Finance / Accounting,sap,0.6,curated
+Finance / Accounting,financial modelling,0.6,curated
+Finance / Accounting,auditing,0.6,curated
+Finance / Accounting,budgeting,0.6,curated
+Finance / Accounting,power bi,0.6,curated
+Diploma Engineer (Fresher),technical drawing,1.0,curated
+Diploma Engineer (Fresher),workshop practice,1.0,curated
+Diploma Engineer (Fresher),safety,1.0,curated
+Diploma Engineer (Fresher),ms office,1.0,curated
+Diploma Engineer (Fresher),communication,1.0,curated
+Diploma Engineer (Fresher),autocad,0.6,curated
+Diploma Engineer (Fresher),basic programming,0.6,curated
+Diploma Engineer (Fresher),teamwork,0.6,curated
+Diploma Engineer (Fresher),project work,0.6,curated
+Diploma Engineer (Fresher),internship,0.6,curated

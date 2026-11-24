@@ -1,0 +1,1360 @@
+{
+  "schema_version": "1.0",
+  "last_updated": "2026-11-24",
+  "disclaimer": "Indicative data. Always verify eligibility, dates and fees on the official portal.",
+  "stages": {
+    "after_10th": {
+      "label": "After 10th",
+      "root": "a10_start"
+    },
+    "after_12th": {
+      "label": "After 12th",
+      "root": "a12_start"
+    },
+    "after_diploma": {
+      "label": "After Diploma (DSE & Jobs)",
+      "root": "ad_start"
+    }
+  },
+  "nodes": [
+    {
+      "id": "a10_start",
+      "stage": "after_10th",
+      "kind": "root",
+      "title": "After 10th: Choose Your Path",
+      "summary": "Every student starts here. Pick between academic (11th-12th), technical (Diploma/ITI) and skill routes.",
+      "duration": "-",
+      "eligibility": "Passed Class 10 (SSC/CBSE/ICSE)",
+      "entrance_exams": [],
+      "top_branches_or_roles": [
+        "11th-12th (Science, Commerce, Arts)",
+        "3-year Polytechnic Diploma",
+        "ITI",
+        "Vocational / skill tracks"
+      ],
+      "next_nodes": [
+        "a10_sci_pcm",
+        "a10_sci_pcb",
+        "a10_commerce",
+        "a10_arts",
+        "a10_dip_cs",
+        "a10_dip_it",
+        "a10_dip_aiml",
+        "a10_dip_mech",
+        "a10_dip_civil",
+        "a10_dip_ece",
+        "a10_dip_elec",
+        "a10_dip_pharm",
+        "a10_iti",
+        "a10_vocational"
+      ],
+      "avg_salary_range": "Not applicable (study track)",
+      "streams": [
+        "all"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a10_sci_pcm",
+      "stage": "after_10th",
+      "kind": "path",
+      "title": "11th-12th Science (PCM)",
+      "summary": "Physics, Chemistry and Maths with an optional Computer Science or Biology subject. Main route to engineering.",
+      "duration": "2 years",
+      "eligibility": "Class 10 pass; Maths and Science recommended",
+      "entrance_exams": [
+        "JEE Main",
+        "JEE Advanced",
+        "MHT-CET",
+        "Other state CETs",
+        "BITSAT",
+        "CUET-UG",
+        "NDA"
+      ],
+      "top_branches_or_roles": [
+        "B.E./B.Tech",
+        "B.Sc (Physics/Maths/CS)",
+        "B.Arch",
+        "NDA/Defence",
+        "Data Science",
+        "AI/ML"
+      ],
+      "next_nodes": [
+        "a12_btech",
+        "a12_emerging",
+        "a12_bsc",
+        "a12_defence",
+        "a12_design"
+      ],
+      "avg_salary_range": "Study track",
+      "streams": [
+        "science_pcm"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [
+        "https://www.cbse.gov.in",
+        "https://jeemain.nta.nic.in"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a10_sci_pcb",
+      "stage": "after_10th",
+      "kind": "path",
+      "title": "11th-12th Science (PCB)",
+      "summary": "Physics, Chemistry and Biology. Main route to medical, dental, pharmacy and life sciences.",
+      "duration": "2 years",
+      "eligibility": "Class 10 pass; Science recommended",
+      "entrance_exams": [
+        "NEET-UG",
+        "CUET-UG",
+        "State pharmacy/agri CETs"
+      ],
+      "top_branches_or_roles": [
+        "MBBS",
+        "BDS",
+        "B.Pharm",
+        "B.Sc Nursing",
+        "BAMS/BHMS",
+        "B.Sc Biotech"
+      ],
+      "next_nodes": [
+        "a12_mbbs",
+        "a12_pharm",
+        "a12_bsc"
+      ],
+      "avg_salary_range": "Study track",
+      "streams": [
+        "science_pcb"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [
+        "https://neet.nta.nic.in"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a10_commerce",
+      "stage": "after_10th",
+      "kind": "path",
+      "title": "11th-12th Commerce",
+      "summary": "Accountancy, Business Studies and Economics. Route to finance, management, CA/CS and law.",
+      "duration": "2 years",
+      "eligibility": "Class 10 pass; Maths helpful for finance/economics",
+      "entrance_exams": [
+        "CUET-UG",
+        "IPMAT",
+        "CA Foundation",
+        "CS Foundation (CSEET)",
+        "CLAT"
+      ],
+      "top_branches_or_roles": [
+        "B.Com",
+        "BBA/BMS",
+        "CA",
+        "CS",
+        "CMA",
+        "Economics",
+        "Law (BA LLB)"
+      ],
+      "next_nodes": [
+        "a12_bcom",
+        "a12_bba",
+        "a12_ca",
+        "a12_cs",
+        "a12_law"
+      ],
+      "avg_salary_range": "Study track",
+      "streams": [
+        "commerce"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [
+        "https://www.icai.org",
+        "https://www.icsi.edu"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a10_arts",
+      "stage": "after_10th",
+      "kind": "path",
+      "title": "11th-12th Arts / Humanities",
+      "summary": "History, Political Science, Economics, Psychology, Languages and more. Route to law, design, media and civil services.",
+      "duration": "2 years",
+      "eligibility": "Class 10 pass",
+      "entrance_exams": [
+        "CUET-UG",
+        "CLAT",
+        "UCEED/NID DAT",
+        "NIFT",
+        "State CETs"
+      ],
+      "top_branches_or_roles": [
+        "BA",
+        "Law",
+        "Design",
+        "Journalism/Mass Comm",
+        "Civil Services (UPSC) base",
+        "Psychology",
+        "Hotel Mgmt"
+      ],
+      "next_nodes": [
+        "a12_arts_ba",
+        "a12_law",
+        "a12_design"
+      ],
+      "avg_salary_range": "Study track",
+      "streams": [
+        "arts"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a10_dip_cs",
+      "stage": "after_10th",
+      "kind": "path",
+      "title": "Diploma in Computer Engineering",
+      "summary": "Programming, DBMS, web, networking. Strong DSE route to B.Tech CSE.",
+      "duration": "3 years (6 semesters)",
+      "eligibility": "Class 10 pass (Maths and Science required for most engineering diplomas)",
+      "entrance_exams": [
+        "State DTE / CAP admission (merit-based)",
+        "Direct admission via polytechnic CAP rounds"
+      ],
+      "top_branches_or_roles": [
+        "Junior Developer",
+        "Web Developer",
+        "Software Tester",
+        "IT Support"
+      ],
+      "next_nodes": [
+        "ad_dse",
+        "ad_ssc_je",
+        "ad_rrb_je",
+        "ad_state_je",
+        "ad_industry",
+        "ad_apprentice"
+      ],
+      "avg_salary_range": "INR 2.4-5 LPA entry",
+      "streams": [
+        "diploma",
+        "dip_cs"
+      ],
+      "college_type": "diploma",
+      "branch_keywords": [
+        "COMPUTER"
+      ],
+      "official_links": [
+        "https://www.aicte-india.org",
+        "https://dte.maharashtra.gov.in"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a10_dip_it",
+      "stage": "after_10th",
+      "kind": "path",
+      "title": "Diploma in Information Technology",
+      "summary": "Web technologies, networking and software basics.",
+      "duration": "3 years (6 semesters)",
+      "eligibility": "Class 10 pass (Maths and Science required for most engineering diplomas)",
+      "entrance_exams": [
+        "State DTE / CAP admission (merit-based)",
+        "Direct admission via polytechnic CAP rounds"
+      ],
+      "top_branches_or_roles": [
+        "Web Developer",
+        "Network Technician",
+        "Database Assistant",
+        "QA Tester"
+      ],
+      "next_nodes": [
+        "ad_dse",
+        "ad_ssc_je",
+        "ad_rrb_je",
+        "ad_state_je",
+        "ad_industry",
+        "ad_apprentice"
+      ],
+      "avg_salary_range": "INR 2.4-5 LPA entry",
+      "streams": [
+        "diploma",
+        "dip_it"
+      ],
+      "college_type": "diploma",
+      "branch_keywords": [
+        "INFORMATION TECHNOLOGY"
+      ],
+      "official_links": [
+        "https://www.aicte-india.org",
+        "https://dte.maharashtra.gov.in"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a10_dip_aiml",
+      "stage": "after_10th",
+      "kind": "path",
+      "title": "Diploma in AI & Machine Learning / Data Science",
+      "summary": "Newer AICTE-approved branch at selected polytechnics. Check that your target institute offers it.",
+      "duration": "3 years (6 semesters)",
+      "eligibility": "Class 10 pass (Maths and Science required for most engineering diplomas)",
+      "entrance_exams": [
+        "State DTE / CAP admission (merit-based)",
+        "Direct admission via polytechnic CAP rounds"
+      ],
+      "top_branches_or_roles": [
+        "Junior ML Technician",
+        "Data Annotator/Analyst",
+        "Python Developer"
+      ],
+      "next_nodes": [
+        "ad_dse",
+        "ad_ssc_je",
+        "ad_rrb_je",
+        "ad_state_je",
+        "ad_industry",
+        "ad_apprentice"
+      ],
+      "avg_salary_range": "INR 2.4-5 LPA entry",
+      "streams": [
+        "diploma",
+        "dip_aiml"
+      ],
+      "college_type": "diploma",
+      "branch_keywords": [
+        "ARTIFICIAL",
+        "MACHINE LEARNING",
+        "DATA SCIENCE"
+      ],
+      "official_links": [
+        "https://www.aicte-india.org",
+        "https://dte.maharashtra.gov.in"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a10_dip_mech",
+      "stage": "after_10th",
+      "kind": "path",
+      "title": "Diploma in Mechanical Engineering",
+      "summary": "Manufacturing, thermal, design and CAD/CAM.",
+      "duration": "3 years (6 semesters)",
+      "eligibility": "Class 10 pass (Maths and Science required for most engineering diplomas)",
+      "entrance_exams": [
+        "State DTE / CAP admission (merit-based)",
+        "Direct admission via polytechnic CAP rounds"
+      ],
+      "top_branches_or_roles": [
+        "Production Technician",
+        "CAD Designer",
+        "Maintenance Engineer (Jr)",
+        "Quality Inspector"
+      ],
+      "next_nodes": [
+        "ad_dse",
+        "ad_ssc_je",
+        "ad_rrb_je",
+        "ad_state_je",
+        "ad_industry",
+        "ad_apprentice"
+      ],
+      "avg_salary_range": "INR 2.4-4.5 LPA entry",
+      "streams": [
+        "diploma",
+        "dip_mech"
+      ],
+      "college_type": "diploma",
+      "branch_keywords": [
+        "MECHANICAL"
+      ],
+      "official_links": [
+        "https://www.aicte-india.org",
+        "https://dte.maharashtra.gov.in"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a10_dip_civil",
+      "stage": "after_10th",
+      "kind": "path",
+      "title": "Diploma in Civil Engineering",
+      "summary": "Construction, surveying, estimation. Large state and central JE demand.",
+      "duration": "3 years (6 semesters)",
+      "eligibility": "Class 10 pass (Maths and Science required for most engineering diplomas)",
+      "entrance_exams": [
+        "State DTE / CAP admission (merit-based)",
+        "Direct admission via polytechnic CAP rounds"
+      ],
+      "top_branches_or_roles": [
+        "Site Supervisor",
+        "Draftsman",
+        "Junior Engineer (PWD)",
+        "Quantity Surveyor"
+      ],
+      "next_nodes": [
+        "ad_dse",
+        "ad_ssc_je",
+        "ad_rrb_je",
+        "ad_state_je",
+        "ad_industry",
+        "ad_apprentice"
+      ],
+      "avg_salary_range": "INR 2.4-4.5 LPA entry",
+      "streams": [
+        "diploma",
+        "dip_civil"
+      ],
+      "college_type": "diploma",
+      "branch_keywords": [
+        "CIVIL"
+      ],
+      "official_links": [
+        "https://www.aicte-india.org",
+        "https://dte.maharashtra.gov.in"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a10_dip_ece",
+      "stage": "after_10th",
+      "kind": "path",
+      "title": "Diploma in Electronics & Telecommunication",
+      "summary": "Circuits, embedded systems, communication.",
+      "duration": "3 years (6 semesters)",
+      "eligibility": "Class 10 pass (Maths and Science required for most engineering diplomas)",
+      "entrance_exams": [
+        "State DTE / CAP admission (merit-based)",
+        "Direct admission via polytechnic CAP rounds"
+      ],
+      "top_branches_or_roles": [
+        "Electronics Technician",
+        "Embedded Support",
+        "Telecom Technician"
+      ],
+      "next_nodes": [
+        "ad_dse",
+        "ad_ssc_je",
+        "ad_rrb_je",
+        "ad_state_je",
+        "ad_industry",
+        "ad_apprentice"
+      ],
+      "avg_salary_range": "INR 2.4-4.8 LPA entry",
+      "streams": [
+        "diploma",
+        "dip_ece"
+      ],
+      "college_type": "diploma",
+      "branch_keywords": [
+        "ELECTRONICS",
+        "TELECOMMUNICATION"
+      ],
+      "official_links": [
+        "https://www.aicte-india.org",
+        "https://dte.maharashtra.gov.in"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a10_dip_elec",
+      "stage": "after_10th",
+      "kind": "path",
+      "title": "Diploma in Electrical Engineering",
+      "summary": "Power systems, machines and controls. Strong PSU/State board JE demand.",
+      "duration": "3 years (6 semesters)",
+      "eligibility": "Class 10 pass (Maths and Science required for most engineering diplomas)",
+      "entrance_exams": [
+        "State DTE / CAP admission (merit-based)",
+        "Direct admission via polytechnic CAP rounds"
+      ],
+      "top_branches_or_roles": [
+        "Electrical Technician",
+        "Substation Operator",
+        "Junior Engineer (Electrical)"
+      ],
+      "next_nodes": [
+        "ad_dse",
+        "ad_ssc_je",
+        "ad_rrb_je",
+        "ad_state_je",
+        "ad_industry",
+        "ad_apprentice"
+      ],
+      "avg_salary_range": "INR 2.4-4.8 LPA entry",
+      "streams": [
+        "diploma",
+        "dip_elec"
+      ],
+      "college_type": "diploma",
+      "branch_keywords": [
+        "ELECTRICAL"
+      ],
+      "official_links": [
+        "https://www.aicte-india.org",
+        "https://dte.maharashtra.gov.in"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a10_dip_pharm",
+      "stage": "after_10th",
+      "kind": "path",
+      "title": "Diploma in Pharmacy (D.Pharm)",
+      "summary": "Regulated by the Pharmacy Council of India. Eligibility starts after 12th in most states; listed here for completeness.",
+      "duration": "2 years",
+      "eligibility": "Class 12 Science (PCB/PCM) generally required",
+      "entrance_exams": [
+        "State D.Pharm CET/merit"
+      ],
+      "top_branches_or_roles": [
+        "Pharmacist",
+        "Medical Store Owner",
+        "Pharma Sales"
+      ],
+      "next_nodes": [
+        "a12_pharm"
+      ],
+      "avg_salary_range": "INR 2-4 LPA entry",
+      "streams": [
+        "diploma",
+        "dip_pharm",
+        "science_pcb"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [
+        "https://www.pci.nic.in"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a10_iti",
+      "stage": "after_10th",
+      "kind": "path",
+      "title": "ITI (Industrial Training Institute)",
+      "summary": "Hands-on trade training under DGT. NCVT certificate leads to apprenticeships and government technician jobs. Some states allow lateral entry to diploma.",
+      "duration": "6 months - 2 years",
+      "eligibility": "Class 8-10 pass depending on trade",
+      "entrance_exams": [
+        "State ITI admission (merit)",
+        "NCVT/SCVT trade tests"
+      ],
+      "top_branches_or_roles": [
+        "Electrician",
+        "Fitter",
+        "Welder",
+        "COPA (computer operator)",
+        "Mechanic (Motor Vehicle)",
+        "Plumber"
+      ],
+      "next_nodes": [
+        "ad_apprentice",
+        "ad_industry",
+        "ad_dse",
+        "a10_vocational"
+      ],
+      "avg_salary_range": "INR 1.8-3.6 LPA entry",
+      "streams": [
+        "iti",
+        "vocational"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [
+        "https://dgt.gov.in"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a10_vocational",
+      "stage": "after_10th",
+      "kind": "path",
+      "title": "Vocational & Skill Tracks (NSQF / Skill India)",
+      "summary": "NSQF-aligned short courses (PMKVY, NAPS, Sector Skill Councils). Fast route to jobs and apprenticeships.",
+      "duration": "3 months - 2 years",
+      "eligibility": "Class 8-10 pass depending on programme",
+      "entrance_exams": [
+        "Programme-specific assessment (Sector Skill Councils)"
+      ],
+      "top_branches_or_roles": [
+        "Retail/BFSI associate",
+        "Electronics repair",
+        "Beauty/Wellness",
+        "IT-ITeS associate",
+        "Healthcare assistant",
+        "Digital marketing"
+      ],
+      "next_nodes": [
+        "ad_apprentice",
+        "ad_industry"
+      ],
+      "avg_salary_range": "INR 1.5-3.5 LPA entry",
+      "streams": [
+        "vocational",
+        "iti"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [
+        "https://www.skillindiadigital.gov.in"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a12_start",
+      "stage": "after_12th",
+      "kind": "root",
+      "title": "After 12th: Choose Your Degree",
+      "summary": "Your options depend on the Class 12 stream. Pick a stream to filter.",
+      "duration": "-",
+      "eligibility": "Passed Class 12",
+      "entrance_exams": [],
+      "top_branches_or_roles": [
+        "Engineering",
+        "Medical",
+        "Commerce & Finance",
+        "Arts, Law & Design",
+        "Emerging tech degrees",
+        "Defence"
+      ],
+      "next_nodes": [
+        "a12_btech",
+        "a12_emerging",
+        "a12_mbbs",
+        "a12_pharm",
+        "a12_bcom",
+        "a12_bba",
+        "a12_ca",
+        "a12_cs",
+        "a12_law",
+        "a12_design",
+        "a12_arts_ba",
+        "a12_bsc",
+        "a12_defence"
+      ],
+      "avg_salary_range": "Not applicable (study track)",
+      "streams": [
+        "all"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a12_btech",
+      "stage": "after_12th",
+      "kind": "path",
+      "title": "B.E. / B.Tech (Engineering)",
+      "summary": "Admission via JoSAA/CSAB (central) or state CAP rounds. Seats are filled by rank, branch and category.",
+      "duration": "4 years",
+      "eligibility": "Class 12 PCM with minimum aggregate set by the counselling authority (commonly 45-50%, relaxations for reserved categories)",
+      "entrance_exams": [
+        "JEE Main (NTA)",
+        "JEE Advanced (IITs)",
+        "MHT-CET (Maharashtra)",
+        "Other state CETs",
+        "BITSAT",
+        "VITEEE"
+      ],
+      "top_branches_or_roles": [
+        "Computer Science/IT",
+        "AI & Data Science",
+        "Electronics & Communication",
+        "Mechanical",
+        "Civil",
+        "Electrical"
+      ],
+      "next_nodes": [
+        "ad_industry",
+        "a12_mtech"
+      ],
+      "avg_salary_range": "INR 4-12 LPA fresher (varies widely by college)",
+      "streams": [
+        "science_pcm",
+        "engineering"
+      ],
+      "college_type": "engineering",
+      "branch_keywords": [
+        "COMPUTER",
+        "INFORMATION TECHNOLOGY",
+        "ELECTRONICS",
+        "MECHANICAL",
+        "CIVIL",
+        "ELECTRICAL"
+      ],
+      "official_links": [
+        "https://jeemain.nta.nic.in",
+        "https://cetcell.mahacet.org",
+        "https://josaa.nic.in"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a12_mtech",
+      "stage": "after_12th",
+      "kind": "path",
+      "title": "M.Tech / MBA / Higher Studies (via GATE/CAT)",
+      "summary": "Postgraduate route after engineering. GATE scores are also used for PSU recruitment.",
+      "duration": "2 years",
+      "eligibility": "B.E./B.Tech degree",
+      "entrance_exams": [
+        "GATE",
+        "CAT",
+        "State PGCET"
+      ],
+      "top_branches_or_roles": [
+        "R&D Engineer",
+        "Professor",
+        "PSU via GATE",
+        "Manager"
+      ],
+      "next_nodes": [],
+      "avg_salary_range": "INR 6-18 LPA",
+      "streams": [
+        "science_pcm",
+        "engineering"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a12_emerging",
+      "stage": "after_12th",
+      "kind": "path",
+      "title": "Emerging-Tech Degrees (AI/ML, Data Science, Cyber Security, Robotics)",
+      "summary": "Specialised B.Tech branches in AI & ML, Data Science, Cyber Security and similar. Check AICTE approval and placement record.",
+      "duration": "4 years",
+      "eligibility": "Class 12 PCM (Maths required)",
+      "entrance_exams": [
+        "JEE Main",
+        "State CETs",
+        "University entrance tests (VITEEE, SRMJEEE etc.)"
+      ],
+      "top_branches_or_roles": [
+        "ML Engineer",
+        "Data Scientist",
+        "Cyber Security Analyst",
+        "Robotics Engineer",
+        "IoT Engineer"
+      ],
+      "next_nodes": [
+        "ad_industry"
+      ],
+      "avg_salary_range": "INR 5-15 LPA fresher",
+      "streams": [
+        "science_pcm",
+        "engineering",
+        "emerging"
+      ],
+      "college_type": "engineering",
+      "branch_keywords": [
+        "ARTIFICIAL",
+        "MACHINE LEARNING",
+        "DATA SCIENCE",
+        "CYBER",
+        "ROBOTICS",
+        "INTERNET OF THINGS"
+      ],
+      "official_links": [],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a12_mbbs",
+      "stage": "after_12th",
+      "kind": "path",
+      "title": "MBBS / BDS (Medical & Dental)",
+      "summary": "Admission only through NEET-UG merit and MCC/state counselling.",
+      "duration": "5.5 years (MBBS incl. internship), 5 years (BDS)",
+      "eligibility": "Class 12 PCB with minimum 50% (General); NEET-UG qualified",
+      "entrance_exams": [
+        "NEET-UG (NTA)",
+        "MCC counselling",
+        "State counselling"
+      ],
+      "top_branches_or_roles": [
+        "Doctor (MBBS)",
+        "Dentist (BDS)",
+        "Specialist after NEET-PG"
+      ],
+      "next_nodes": [],
+      "avg_salary_range": "INR 6-15 LPA (varies widely)",
+      "streams": [
+        "science_pcb",
+        "medical"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [
+        "https://neet.nta.nic.in",
+        "https://mcc.nic.in"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a12_pharm",
+      "stage": "after_12th",
+      "kind": "path",
+      "title": "B.Pharm / Allied Health / B.Sc Nursing",
+      "summary": "Regulated by PCI and INC. Diploma holders may enter B.Pharm lateral (2nd year) in many states.",
+      "duration": "3-4 years",
+      "eligibility": "Class 12 PCB or PCM (pharmacy), PCB (nursing)",
+      "entrance_exams": [
+        "State pharmacy CET",
+        "NEET (some programmes)",
+        "University entrance"
+      ],
+      "top_branches_or_roles": [
+        "Pharmacist",
+        "Drug Inspector",
+        "Clinical Research",
+        "Nurse"
+      ],
+      "next_nodes": [],
+      "avg_salary_range": "INR 3-7 LPA entry",
+      "streams": [
+        "science_pcb",
+        "medical",
+        "dip_pharm"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [
+        "https://www.pci.nic.in",
+        "https://www.indiannursingcouncil.org"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a12_bcom",
+      "stage": "after_12th",
+      "kind": "path",
+      "title": "B.Com / B.Com (Hons)",
+      "summary": "Core degree for finance, banking and accounting.",
+      "duration": "3-4 years",
+      "eligibility": "Class 12 any stream (Commerce preferred)",
+      "entrance_exams": [
+        "CUET-UG",
+        "University merit"
+      ],
+      "top_branches_or_roles": [
+        "Accountant",
+        "Tax Consultant",
+        "Bank PO/Clerk",
+        "Financial Analyst"
+      ],
+      "next_nodes": [
+        "a12_ca",
+        "a12_cs"
+      ],
+      "avg_salary_range": "INR 2.5-6 LPA entry",
+      "streams": [
+        "commerce",
+        "arts"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a12_bba",
+      "stage": "after_12th",
+      "kind": "path",
+      "title": "BBA / BMS / Integrated MBA",
+      "summary": "Management foundation, often followed by MBA via CAT/CMAT.",
+      "duration": "3-5 years",
+      "eligibility": "Class 12 any stream",
+      "entrance_exams": [
+        "CUET-UG",
+        "IPMAT",
+        "NPAT",
+        "SET",
+        "University tests"
+      ],
+      "top_branches_or_roles": [
+        "Business Analyst",
+        "Marketing Executive",
+        "HR Executive",
+        "Entrepreneur"
+      ],
+      "next_nodes": [],
+      "avg_salary_range": "INR 3-8 LPA entry",
+      "streams": [
+        "commerce",
+        "arts",
+        "science_pcm"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a12_ca",
+      "stage": "after_12th",
+      "kind": "path",
+      "title": "Chartered Accountancy (CA)",
+      "summary": "Conducted by ICAI. Attempt schedule and rules are updated periodically.",
+      "duration": "4.5-5 years",
+      "eligibility": "Class 12 pass; register for Foundation after Class 12 (ICAI)",
+      "entrance_exams": [
+        "CA Foundation",
+        "CA Intermediate",
+        "CA Final (ICAI)"
+      ],
+      "top_branches_or_roles": [
+        "Chartered Accountant",
+        "Auditor",
+        "Tax Advisor",
+        "CFO track"
+      ],
+      "next_nodes": [],
+      "avg_salary_range": "INR 7-12 LPA at qualification",
+      "streams": [
+        "commerce"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [
+        "https://www.icai.org"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a12_cs",
+      "stage": "after_12th",
+      "kind": "path",
+      "title": "Company Secretary (CS)",
+      "summary": "Conducted by ICSI.",
+      "duration": "3-4 years",
+      "eligibility": "Class 12 pass; CSEET (ICSI)",
+      "entrance_exams": [
+        "CSEET",
+        "CS Executive",
+        "CS Professional"
+      ],
+      "top_branches_or_roles": [
+        "Company Secretary",
+        "Compliance Officer",
+        "Legal Advisor"
+      ],
+      "next_nodes": [],
+      "avg_salary_range": "INR 5-10 LPA",
+      "streams": [
+        "commerce",
+        "arts"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [
+        "https://www.icsi.edu"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a12_law",
+      "stage": "after_12th",
+      "kind": "path",
+      "title": "Law (BA LLB / BBA LLB / B.Com LLB)",
+      "summary": "Bar Council of India approval is required for the law college.",
+      "duration": "5 years",
+      "eligibility": "Class 12 any stream with minimum 45-50%",
+      "entrance_exams": [
+        "CLAT (NLUs)",
+        "AILET",
+        "LSAT-India",
+        "University entrance"
+      ],
+      "top_branches_or_roles": [
+        "Advocate",
+        "Corporate Counsel",
+        "Judiciary (after LLB)",
+        "Legal Analyst"
+      ],
+      "next_nodes": [],
+      "avg_salary_range": "INR 4-14 LPA (varies widely)",
+      "streams": [
+        "arts",
+        "commerce",
+        "science_pcm",
+        "science_pcb"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [
+        "https://consortiumofnlus.ac.in"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a12_design",
+      "stage": "after_12th",
+      "kind": "path",
+      "title": "Design / Architecture (B.Des, B.Arch, NIFT)",
+      "summary": "Portfolio and aptitude-based admissions.",
+      "duration": "4-5 years",
+      "eligibility": "Class 12 any stream (B.Arch needs PCM and NATA/JEE Paper 2)",
+      "entrance_exams": [
+        "UCEED",
+        "NID DAT",
+        "NIFT",
+        "NATA",
+        "JEE Main Paper 2"
+      ],
+      "top_branches_or_roles": [
+        "UI/UX Designer",
+        "Architect",
+        "Fashion Designer",
+        "Product Designer"
+      ],
+      "next_nodes": [],
+      "avg_salary_range": "INR 3-10 LPA",
+      "streams": [
+        "arts",
+        "science_pcm",
+        "commerce"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a12_arts_ba",
+      "stage": "after_12th",
+      "kind": "path",
+      "title": "BA / B.Sc / Mass Communication / Civil Services base",
+      "summary": "Broad degrees with CUET-based central university admissions.",
+      "duration": "3 years",
+      "eligibility": "Class 12 any stream",
+      "entrance_exams": [
+        "CUET-UG",
+        "University merit"
+      ],
+      "top_branches_or_roles": [
+        "Teacher",
+        "Journalist",
+        "Psychologist",
+        "UPSC/State PSC aspirant",
+        "Content Strategist"
+      ],
+      "next_nodes": [],
+      "avg_salary_range": "INR 2.5-6 LPA entry",
+      "streams": [
+        "arts",
+        "commerce"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a12_bsc",
+      "stage": "after_12th",
+      "kind": "path",
+      "title": "B.Sc (Physics, Chemistry, Maths, CS, Biotech, Data Science)",
+      "summary": "NEP 2020 allows multiple entry/exit and a 4-year honours option.",
+      "duration": "3-4 years (NEP: 4-year honours)",
+      "eligibility": "Class 12 Science",
+      "entrance_exams": [
+        "CUET-UG",
+        "University entrance"
+      ],
+      "top_branches_or_roles": [
+        "Research Associate",
+        "Data Analyst",
+        "Lab Scientist",
+        "Teacher"
+      ],
+      "next_nodes": [],
+      "avg_salary_range": "INR 3-7 LPA entry",
+      "streams": [
+        "science_pcm",
+        "science_pcb"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "a12_defence",
+      "stage": "after_12th",
+      "kind": "path",
+      "title": "Defence (NDA / CDS / Technical Entry)",
+      "summary": "Selection via UPSC and SSB. Check UPSC for current age and eligibility rules.",
+      "duration": "3-4 years training",
+      "eligibility": "Class 12 PCM for Army/Navy/AF technical; unmarried, age limits apply",
+      "entrance_exams": [
+        "NDA (UPSC)",
+        "CDS (UPSC)",
+        "TES (JEE Main based)",
+        "SSB interview"
+      ],
+      "top_branches_or_roles": [
+        "Army/Navy/Air Force Officer"
+      ],
+      "next_nodes": [],
+      "avg_salary_range": "Officer pay scale (level 10 and above)",
+      "streams": [
+        "science_pcm",
+        "arts",
+        "commerce"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [
+        "https://upsc.gov.in"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "ad_start",
+      "stage": "after_diploma",
+      "kind": "root",
+      "title": "After Diploma: Choose Your Route",
+      "summary": "A diploma is a complete qualification. You can work, apply to government JE posts or continue to a degree.",
+      "duration": "-",
+      "eligibility": "Passed 3-year Diploma (any engineering branch)",
+      "entrance_exams": [],
+      "top_branches_or_roles": [
+        "Direct Second Year (DSE) B.E./B.Tech",
+        "SSC JE / RRB JE",
+        "State JE",
+        "Industry job",
+        "Apprenticeship"
+      ],
+      "next_nodes": [
+        "ad_dse",
+        "ad_ssc_je",
+        "ad_rrb_je",
+        "ad_state_je",
+        "ad_industry",
+        "ad_apprentice"
+      ],
+      "avg_salary_range": "Not applicable (study track)",
+      "streams": [
+        "all"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "ad_dse",
+      "stage": "after_diploma",
+      "kind": "path",
+      "title": "Direct Second Year (DSE) B.E./B.Tech",
+      "summary": "Lateral entry into 2nd year of B.E./B.Tech. Counselling and cut-offs are state-specific.",
+      "duration": "3 years",
+      "eligibility": "Passed 3-year diploma in a relevant branch; minimum marks set by the state (commonly 45-50%)",
+      "entrance_exams": [
+        "State DSE CAP (e.g. Maharashtra DSE via CET Cell)",
+        "Merit-based on diploma marks",
+        "Some states: ECET (Telangana/AP), LEET (Gujarat/Rajasthan)"
+      ],
+      "top_branches_or_roles": [
+        "B.Tech CSE/IT",
+        "Mechanical",
+        "Civil",
+        "Electrical",
+        "Electronics"
+      ],
+      "next_nodes": [
+        "ad_industry",
+        "a12_mtech"
+      ],
+      "avg_salary_range": "INR 4-10 LPA fresher",
+      "streams": [
+        "diploma",
+        "engineering"
+      ],
+      "college_type": "engineering",
+      "branch_keywords": [
+        "COMPUTER",
+        "INFORMATION TECHNOLOGY",
+        "MECHANICAL",
+        "CIVIL",
+        "ELECTRICAL",
+        "ELECTRONICS"
+      ],
+      "official_links": [
+        "https://cetcell.mahacet.org",
+        "https://www.aicte-india.org"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "ad_ssc_je",
+      "stage": "after_diploma",
+      "kind": "path",
+      "title": "SSC JE (Junior Engineer)",
+      "summary": "Central government JE recruitment. Check SSC notification for current eligibility and syllabus.",
+      "duration": "Exam cycle ~1 year",
+      "eligibility": "Diploma in Civil/Mechanical/Electrical (age limit as per notification)",
+      "entrance_exams": [
+        "SSC JE Paper I and II (SSC)"
+      ],
+      "top_branches_or_roles": [
+        "JE Civil/Mech/Electrical in CPWD, MES, CWC, etc."
+      ],
+      "next_nodes": [
+        "ad_industry"
+      ],
+      "avg_salary_range": "Pay Level 6 (approx INR 35,400-1,12,400 base scale)",
+      "streams": [
+        "diploma",
+        "dip_civil",
+        "dip_mech",
+        "dip_elec"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [
+        "https://ssc.gov.in"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "ad_rrb_je",
+      "stage": "after_diploma",
+      "kind": "path",
+      "title": "RRB JE (Railways Junior Engineer)",
+      "summary": "Indian Railways recruitment via RRBs.",
+      "duration": "Exam cycle ~1 year",
+      "eligibility": "Diploma in relevant branch (age limit per notification)",
+      "entrance_exams": [
+        "RRB JE CBT-1, CBT-2 (RRB)"
+      ],
+      "top_branches_or_roles": [
+        "Railways JE (Civil, Mech, Elec, Electronics, IT)"
+      ],
+      "next_nodes": [
+        "ad_industry"
+      ],
+      "avg_salary_range": "Pay Level 6 (approx INR 35,400 base)",
+      "streams": [
+        "diploma",
+        "dip_civil",
+        "dip_mech",
+        "dip_elec",
+        "dip_ece",
+        "dip_cs",
+        "dip_it"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [
+        "https://indianrailways.gov.in"
+      ],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "ad_state_je",
+      "stage": "after_diploma",
+      "kind": "path",
+      "title": "State JE & PSU Jobs (MSEB, PWD, MPSC etc.)",
+      "summary": "State and PSU openings follow separate notifications.",
+      "duration": "Exam cycle ~1 year",
+      "eligibility": "Diploma in relevant branch",
+      "entrance_exams": [
+        "State PSC / Board exams",
+        "PSU-specific written tests"
+      ],
+      "top_branches_or_roles": [
+        "JE (PWD/Irrigation/Electricity Board)",
+        "PSU Diploma Trainee"
+      ],
+      "next_nodes": [
+        "ad_industry"
+      ],
+      "avg_salary_range": "INR 3.5-7 LPA",
+      "streams": [
+        "diploma",
+        "dip_civil",
+        "dip_mech",
+        "dip_elec",
+        "dip_ece"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "ad_industry",
+      "stage": "after_diploma",
+      "kind": "path",
+      "title": "Direct Industry Entry / Private Sector",
+      "summary": "Build projects and certifications to move ahead faster. Combine with part-time degree via DSE if desired.",
+      "duration": "-",
+      "eligibility": "Diploma or ITI or degree",
+      "entrance_exams": [
+        "Company tests and interviews",
+        "Campus placements"
+      ],
+      "top_branches_or_roles": [
+        "Technician",
+        "Junior Developer",
+        "Site Supervisor",
+        "QA Engineer"
+      ],
+      "next_nodes": [],
+      "avg_salary_range": "INR 2.4-6 LPA entry",
+      "streams": [
+        "all"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [],
+      "last_updated": "2026-11-24"
+    },
+    {
+      "id": "ad_apprentice",
+      "stage": "after_diploma",
+      "kind": "path",
+      "title": "Apprenticeship (NAPS / NATS)",
+      "summary": "Paid on-the-job training with government stipend support.",
+      "duration": "1-3 years",
+      "eligibility": "Diploma, ITI or vocational certificate",
+      "entrance_exams": [
+        "Company selection via NATS/NAPS portals"
+      ],
+      "top_branches_or_roles": [
+        "Graduate/Technician Apprentice"
+      ],
+      "next_nodes": [
+        "ad_industry"
+      ],
+      "avg_salary_range": "Stipend INR 8,000-15,000 per month (varies)",
+      "streams": [
+        "diploma",
+        "iti",
+        "vocational"
+      ],
+      "college_type": null,
+      "branch_keywords": [],
+      "official_links": [
+        "https://nats.education.gov.in",
+        "https://www.apprenticeshipindia.gov.in"
+      ],
+      "last_updated": "2026-11-24"
+    }
+  ]
+}

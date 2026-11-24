@@ -1,14 +1,20 @@
 import React from 'react';
 import logoImg from '../assets/logo.png';
-import { Home, Compass, BookOpen, LogOut, Sparkles } from 'lucide-react';
+import { Home, Compass, BookOpen, LogOut, Sparkles, LayoutDashboard, Map, Bot, FileText } from 'lucide-react';
+import { STAGE_LABELS, useProfile } from '../context/ProfileContext';
 
 const NAV_ITEMS = [
-  { id: 'home',    label: 'Assessment',      icon: Home,    color: 'from-indigo-500 to-purple-500' },
+  { id: 'dashboard', label: 'My Dashboard',    icon: LayoutDashboard, color: 'from-orange-500 to-pink-500' },
+  { id: 'roadmap',   label: 'Roadmap Explorer', icon: Map,    color: 'from-emerald-500 to-teal-500' },
+  { id: 'mentor',    label: 'AI Mentor',       icon: Bot,     color: 'from-violet-500 to-purple-500' },
+  { id: 'resume',    label: 'Resume Studio',   icon: FileText, color: 'from-sky-500 to-blue-500' },
+  { id: 'home',    label: 'Stream Assessment', icon: Home,    color: 'from-indigo-500 to-purple-500' },
   { id: 'careers', label: 'Explore Careers', icon: Compass, color: 'from-pink-500 to-rose-500' },
   { id: 'streams', label: 'Stream Catalog',  icon: BookOpen,color: 'from-cyan-500 to-blue-500' },
 ];
 
 export default function Sidebar({ activeView, setActiveView, onResetName, studentName }) {
+  const { profile } = useProfile();
   const initials = studentName
     ? studentName.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2)
     : 'CC';
@@ -21,7 +27,7 @@ export default function Sidebar({ activeView, setActiveView, onResetName, studen
       <div className="p-5 pb-3">
         <img 
           src={logoImg} 
-          alt="Career Copilot Logo" 
+          alt="Career Forge AI logo" 
           className="w-48 max-w-full h-auto object-contain drop-shadow-md"
         />
         <p className="text-[10px] font-semibold text-indigo-400 uppercase tracking-widest mt-1">AI Pathway Engine</p>
@@ -78,7 +84,7 @@ export default function Sidebar({ activeView, setActiveView, onResetName, studen
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-bold text-white truncate">{studentName || 'Student'}</p>
-            <p className="text-[10px] text-white/40 font-medium">Class 10 Student</p>
+            <p className="text-[10px] text-white/40 font-medium">{STAGE_LABELS[profile?.stage] || 'Student'}</p>
           </div>
           <button
             onClick={onResetName}

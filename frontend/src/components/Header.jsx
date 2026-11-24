@@ -2,6 +2,10 @@ import React from 'react';
 import { Menu, Bell, Sparkles, ChevronRight } from 'lucide-react';
 
 const VIEW_LABELS = {
+  dashboard: { title: 'My Dashboard',     sub: 'Your roadmap, mentor, resume score and next steps' },
+  roadmap:   { title: 'Roadmap Explorer', sub: 'After 10th, after 12th and after diploma paths' },
+  mentor:    { title: 'AI Mentor',        sub: 'Personalised guidance on exams, colleges and careers' },
+  resume:    { title: 'Resume Studio',    sub: 'ATS score, skill gaps and a learning plan' },
   home:    { title: 'Career Assessment', sub: 'Select your subjects, skills & interests' },
   results: { title: 'Your Results',       sub: 'AI-generated career pathway recommendation' },
   streams: { title: 'Stream Catalog',     sub: 'Explore all 12 Class 11–12 academic streams' },
@@ -9,7 +13,7 @@ const VIEW_LABELS = {
 };
 
 export default function Header({ studentName, activeView, toggleMobileMenu }) {
-  const { title, sub } = VIEW_LABELS[activeView] || VIEW_LABELS.home;
+  const { title, sub } = VIEW_LABELS[activeView] || VIEW_LABELS.dashboard;
 
   return (
     <header className="flex items-center justify-between gap-4 px-6 py-5 border-b border-slate-100/80 shrink-0">
@@ -25,12 +29,12 @@ export default function Header({ studentName, activeView, toggleMobileMenu }) {
         {/* Page breadcrumb */}
         <div className="min-w-0">
           <div className="flex items-center gap-2 mb-0.5">
-            <span className="text-xs font-semibold text-indigo-500 uppercase tracking-wider">Career Copilot</span>
-            <ChevronRight className="w-3 h-3 text-slate-300" />
+            <span className="hidden sm:inline text-xs font-semibold text-indigo-500 uppercase tracking-wider whitespace-nowrap">Career Forge AI</span>
+            <ChevronRight className="hidden sm:block w-3 h-3 text-slate-300" />
             <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider truncate">{title}</span>
           </div>
           <h2 className="text-xl font-black text-slate-900 tracking-tight truncate">
-            {activeView === 'home' ? `Hi, ${studentName} 👋` : title}
+            {activeView === 'dashboard' ? `Hi, ${studentName} 👋` : title}
           </h2>
           <p className="text-xs text-slate-400 font-medium mt-0.5 hidden sm:block">{sub}</p>
         </div>

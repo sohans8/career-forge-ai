@@ -1,0 +1,86 @@
+import pytest
+
+from backend.app.services.llm_service import parse_json_object, LLMError
+from backend.app.services.rag_service import chunk_text
+
+
+@pytest.fixture(autouse=True)
+def no_llm(monkeypatch):
+    for k in ("GEMINI_API_KEY", "GROQ_API_KEY", "OPENAI_API_KEY"):
+        monkeypatch.setenv(k, "")
+
+
+def test_quiz_definition(client):
+    q = client.get("/api/guidance/quiz").json()
+    assert {"stages", "streams", "interests", "strengths"} <= q.keys()
+
+
+def test_recommend_diploma_student(client):
+    r = client.post("/api/guidance/recommend", json={
+        "stage": "after_diploma", "stream": "dip_cs", "interests": ["I", "R", "C"],
+        "strengths": ["programming", "problem_solving"], "career_goal": "full stack developer", "name": "Asha"})
+    assert r.status_code == 200
+    b = r.json()
+    assert len(b["top_careers"]) == 6
+    assert b["suggested_resume_role"] == "Full Stack Developer"
+    assert b["recommended_roadmap"]["primary_node"]
+    assert b["next_actions"]
+    assert b["top_careers"][0]["match"] >= b["top_careers"][-1]["match"]
+
+
+def test_recommend_validates_input(client):
+    assert client.post("/api/guidance/recommend", json={"stage": "bad"}).status_code == 422
+    r = client.post("/api/guidance/recommend", json={"stage": "after_10th"})
+    assert r.status_code == 200
+
+
+def test_mentor_offline_uses_rag_and_node(client):
+    r = client.post("/api/mentor/chat", json={
+        "message": "How does DSE admission work?", "node_id": "ad_dse",
+        "profile": {"stage": "after_diploma", "stream": "dip_cs", "target_goal": "B.Tech CSE"}})
+    assert r.status_code == 200
+    b = r.json()
+    assert b["llm_used"] is False
+    assert "Direct Second Year" in b["reply"] and "official" in b["reply"].lower()
+    assert any(s.startswith("02_") for s in b["sources"])
+
+
+def test_mentor_validation(client):
+    assert client.post("/api/mentor/chat", json={"message": ""}).status_code == 422
+    assert client.get("/api/mentor/prompts", params={"stage": "after_diploma"}).json()["prompts"]
+
+
+def test_mentor_uses_llm_when_configured(client, monkeypatch):
+    from backend.app.services import llm_service as mod
+    monkeypatch.setenv("GROQ_API_KEY", "test-key")
+    seen = {}
+
+    def fake(self, messages, system="", json_mode=False, temperature=0.4):
+        seen["system"] = system
+        return "Mock answer"
+
+    monkeypatch.setattr(mod.LLMService, "chat", fake)
+    b = client.post("/api/mentor/chat", json={"message": "Compare Diploma CS vs 11th Science",
+                                              "profile": {"stage": "after_10th", "stream": "diploma"}}).json()
+    assert b["llm_used"] is True and b["reply"] == "Mock answer" and b["provider"] == "groq"
+    assert "Class 10 student" in seen["system"] and "official portal" in seen["system"]
+
+
+def test_status_and_health(client):
+    assert client.get("/api/v1/health").json() == {"status": "ok"}
+    s = client.get("/api/status").json()
+    assert s["roadmap_nodes"] > 20 and s["colleges"] > 1000 and s["rag"]["chunks"] > 0
+    assert s["llm"]["configured"] is False
+
+
+def test_parse_json_object_variants():
+    assert parse_json_object('```json\n{"a": 1}\n```') == {"a": 1}
+    assert parse_json_object('Here: {"a": 2} done') == {"a": 2}
+    with pytest.raises(LLMError):
+        parse_json_object("no json")
+
+
+def test_chunking_overlaps():
+    words = " ".join(f"w{i}" for i in range(400))
+    chunks = chunk_text(words)
+    assert len(chunks) >= 2 and chunks[0].split()[-1] in chunks[1]

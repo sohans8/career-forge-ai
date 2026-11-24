@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logoImg from './assets/logo.png';
 import { ArrowRight, Zap, Star, Brain } from 'lucide-react';
 import Sidebar from './components/Sidebar';
@@ -7,6 +7,13 @@ import AssessmentView from './views/AssessmentView';
 import ResultsView from './views/ResultsView';
 import StreamsView from './views/StreamsView';
 import CareersView from './views/CareersView';
+import StudentDashboard from './pages/StudentDashboard';
+import RoadmapPage from './pages/RoadmapPage';
+import MentorPage from './pages/MentorPage';
+import ResumePage from './pages/ResumePage';
+import OnboardingWizard from './components/OnboardingWizard';
+import MentorWidget from './components/MentorWidget';
+import { useProfile } from './context/ProfileContext';
 import { getRecommendations } from './services/api';
 
 // ─── Floating orb background ─────────────────────────────────────────────────
@@ -50,7 +57,7 @@ function LandingScreen({ inputName, setInputName, onSubmit }) {
           <div className="flex justify-center mb-3">
             <img 
               src={logoImg} 
-              alt="Career Copilot Logo" 
+              alt="Career Forge AI logo" 
               className="w-64 sm:w-72 h-auto object-contain drop-shadow-md"
             />
           </div>
@@ -58,7 +65,7 @@ function LandingScreen({ inputName, setInputName, onSubmit }) {
           {/* Subtitle */}
           <div className="text-center mb-8">
             <p className="text-sm font-medium text-indigo-300">
-              AI-Powered Class 10 → Class 11 Pathway
+              Your AI career platform: after 10th, 12th &amp; Diploma
             </p>
           </div>
 
@@ -99,7 +106,7 @@ function LandingScreen({ inputName, setInputName, onSubmit }) {
               className="w-full py-4 rounded-2xl font-bold text-sm text-white flex items-center justify-center gap-2 transition-all hover:-translate-y-0.5 active:scale-95"
               style={{background: 'linear-gradient(135deg, #f97316, #ef4444)', boxShadow: '0 8px 24px rgba(249,115,22,0.4)'}}
             >
-              <span>Get My Career Recommendation</span>
+              <span>Get Started</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>
@@ -116,10 +123,17 @@ function LandingScreen({ inputName, setInputName, onSubmit }) {
 
 // ─── Main App ─────────────────────────────────────────────────────────────────
 export default function App() {
-  const [studentName, setStudentName]       = useState('');
-  const [hasEnteredName, setHasEnteredName] = useState(false);
+  const { name: studentName, profile, patch, reset } = useProfile();
+  const hasEnteredName = !!studentName;
   const [inputName, setInputName]           = useState('');
-  const [activeView, setActiveView]         = useState('home');
+  const [wizardOpen, setWizardOpen]         = useState(false);
+  const [activeView, setActiveView]         = useState('dashboard');
+
+  // Show the onboarding wizard once a student has entered their name and has no saved profile.
+  useEffect(() => {
+    if (hasEnteredName && !profile) setWizardOpen(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hasEnteredName]);
   const [activeResult, setActiveResult]     = useState(null);
   const [loading, setLoading]               = useState(false);
   const [error, setError]                   = useState(null);
@@ -129,17 +143,15 @@ export default function App() {
     e.preventDefault();
     const trimmed = inputName.trim();
     if (trimmed) {
-      setStudentName(trimmed);
-      setHasEnteredName(true);
+      patch({ name: trimmed });
     }
   };
 
   const handleResetName = () => {
-    setHasEnteredName(false);
-    setStudentName('');
+    reset();
     setInputName('');
     setActiveResult(null);
-    setActiveView('home');
+    setActiveView('dashboard');
   };
 
   const handleAssessmentSubmit = async (profileData) => {
@@ -169,11 +181,15 @@ export default function App() {
   // ── Main dashboard ──────────────────────────────────────────────────────────
   const renderView = () => {
     switch (activeView) {
+      case 'dashboard': return <StudentDashboard go={setActiveView} openWizard={() => setWizardOpen(true)} />;
+      case 'roadmap': return <RoadmapPage />;
+      case 'mentor':  return <MentorPage />;
+      case 'resume':  return <ResumePage />;
       case 'home':    return <AssessmentView studentName={studentName} onSubmit={handleAssessmentSubmit} loading={loading} />;
       case 'results': return <ResultsView activeResult={activeResult} studentName={studentName} onEditAssessment={() => setActiveView('home')} />;
       case 'streams': return <StreamsView onSelectStream={() => setActiveView('home')} />;
       case 'careers': return <CareersView />;
-      default:        return <AssessmentView studentName={studentName} onSubmit={handleAssessmentSubmit} loading={loading} />;
+      default:        return <StudentDashboard go={setActiveView} openWizard={() => setWizardOpen(true)} />;
     }
   };
 
@@ -214,6 +230,8 @@ export default function App() {
           </main>
         </div>
       </div>
+      <MentorWidget hidden={activeView === 'mentor'} />
+      {wizardOpen && <OnboardingWizard dismissible={!!profile} onClose={() => setWizardOpen(false)} />}
     </div>
   );
 }

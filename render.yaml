@@ -1,0 +1,28 @@
+# Render Blueprint for the Career Forge AI backend.
+# New service: Render dashboard > New > Blueprint > pick this repo.
+# Existing service: copy these settings into the service's Settings page.
+services:
+  - type: web
+    name: career-copilot-api
+    runtime: python
+    plan: free
+    branch: feature/backend-api
+    autoDeploy: true
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: python -m uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: CORS_ORIGINS
+        value: "*"
+      - key: LLM_PROVIDER
+        value: auto
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: MAX_UPLOAD_MB
+        value: "5"
