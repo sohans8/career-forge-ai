@@ -23,6 +23,7 @@ Explore every route, find AICTE colleges, ask questions and get your resume ATS-
 ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-0ea5e9?logo=tailwindcss&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
 ![Python](https://img.shields.io/badge/Python_3.11-3776AB?logo=python&logoColor=white)
+[![CI](https://github.com/sohans8/career-forge-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/sohans8/career-forge-ai/actions/workflows/ci.yml)
 ![Tests](https://img.shields.io/badge/tests-47_passing-22c55e)
 ![AI](https://img.shields.io/badge/AI-Gemini_%7C_Groq_%7C_OpenAI-8b5cf6)
 ![License](https://img.shields.io/badge/license-MIT-blue)
