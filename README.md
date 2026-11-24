@@ -13,7 +13,7 @@ Interactive education roadmaps, an AICTE college finder, a document-grounded AI 
 ![React 18](https://img.shields.io/badge/react-18-61DAFB?logo=react&logoColor=black)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi&logoColor=white)
 
-[**Live app**](https://dhruvsisodiya.netlify.app) · [**API**](https://career-copilot-api-9591.onrender.com) · [**API docs**](https://career-copilot-api-9591.onrender.com/docs) · [**Health**](https://career-copilot-api-9591.onrender.com/api/v1/health) · [**Architecture**](docs/ARCHITECTURE.md)
+[**Live app**](https://sohans8.github.io/career-forge-ai/) · [**API**](https://career-copilot-api-9591.onrender.com) · [**API docs**](https://career-copilot-api-9591.onrender.com/docs) · [**Health**](https://career-copilot-api-9591.onrender.com/api/v1/health) · [**Architecture**](docs/ARCHITECTURE.md)
 
 </div>
 
@@ -70,10 +70,13 @@ After Class 10, an Indian student has to choose between 11th Science, Commerce, 
 
 | Service | URL |
 |---|---|
-| Frontend (Netlify) | https://dhruvsisodiya.netlify.app |
+| Frontend (GitHub Pages) | https://sohans8.github.io/career-forge-ai/ |
+| Frontend (Netlify, previous address) | https://dhruvsisodiya.netlify.app |
 | Backend API (Render) | https://career-copilot-api-9591.onrender.com |
 | API docs (Swagger) | https://career-copilot-api-9591.onrender.com/docs |
 | Health check | https://career-copilot-api-9591.onrender.com/api/v1/health |
+
+The frontend is served from the `gh-pages` branch. To update it, build with `npx vite build --base=/career-forge-ai/` in `frontend/` and publish `dist/` to that branch. `netlify.toml` is kept, so the repo can also be connected to Netlify again.
 
 The backend runs on Render's free tier. After about 15 minutes without traffic it sleeps, and the next request takes 30 to 60 seconds. The frontend waits up to 60 seconds and shows a retry message if the server is still waking up.
 
