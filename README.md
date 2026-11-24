@@ -23,7 +23,7 @@ Explore every route, find AICTE colleges, ask questions and get your resume ATS-
 ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-0ea5e9?logo=tailwindcss&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
 ![Python](https://img.shields.io/badge/Python_3.11-3776AB?logo=python&logoColor=white)
-![Tests](https://img.shields.io/badge/tests-46_passing-22c55e)
+![Tests](https://img.shields.io/badge/tests-47_passing-22c55e)
 ![AI](https://img.shields.io/badge/AI-Gemini_%7C_Groq_%7C_OpenAI-8b5cf6)
 
 <br />
@@ -269,7 +269,7 @@ python -m backend.scripts.update_education_data --apply backend/data/staged_patc
 <br />
 
 ```bash
-python -m pytest backend/tests -q     # 46 tests, no internet or keys needed
+python -m pytest backend/tests -q     # 47 tests, no internet or keys needed
 cd frontend && npm run build
 ```
 
@@ -288,7 +288,7 @@ backend/
   data/       datasets and schema
   scripts/    data building, checking and the weekly watcher
   ml/         Class 10 stream recommender model
-  tests/      46 tests
+  tests/      47 tests
 frontend/src/
   pages/      Dashboard, Roadmap, Mentor, Resume
   components/ Wizard, chat, sidebar, header

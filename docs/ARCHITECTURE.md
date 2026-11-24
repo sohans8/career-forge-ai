@@ -104,7 +104,7 @@ No change reaches `roadmaps_india.json` without a human approving it in a pull r
 
 ## Testing
 
-`python -m pytest backend/tests -q` runs 46 tests with FastAPI's `TestClient`. LLM calls are monkeypatched, so the tests need no network or keys. One test queries colleges for every roadmap node that has a `college_type`, the same way the drawer does, so a node pointing at an empty or wrong college category fails CI.
+`python -m pytest backend/tests -q` runs 47 tests with FastAPI's `TestClient`. LLM calls are monkeypatched, so the tests need no network or keys. One test queries colleges for every roadmap node that has a `college_type`, the same way the drawer does, so a node pointing at an empty or wrong college category fails CI.
 
 `.github/workflows/ci.yml` runs on every push and pull request. The backend job validates the datasets, runs the tests, starts uvicorn and calls `/api/v1/health`, `/api/roadmaps` and `/api/status`. The frontend job runs `npm ci` and `npm run build`. The same backend suite also runs inside the auto-sync workflow after each data refresh.
 

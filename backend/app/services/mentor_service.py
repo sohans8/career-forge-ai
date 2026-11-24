@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import logging
+import re
 from datetime import date
 
 from backend.app.services.llm_service import LLMError, Message, llm_service
@@ -69,6 +70,14 @@ def _offline_reply(question: str, node: dict | None, snippets: list[dict], reaso
     return "\n\n".join(parts)
 
 
+_CITATION_MARKS = re.compile(r"\s*【[^】]{0,40}】")
+
+
+def clean_reply(text: str) -> str:
+    """Remove model-specific citation markers such as 【1†L1-L8】; sources are listed separately."""
+    return _CITATION_MARKS.sub("", text).strip()
+
+
 def chat(message: str, history: list[dict], profile: dict, node_id: str | None = None) -> dict:
     node = roadmap_service.get_node(node_id) if node_id else None
     query = " ".join(filter(None, [message, profile.get("stream") or "", node["title"] if node else ""]))
@@ -79,7 +88,7 @@ def chat(message: str, history: list[dict], profile: dict, node_id: str | None =
     messages = [Message(h["role"], h["content"]) for h in history[-8:] if h["role"] in ("user", "assistant")]
     messages.append(Message("user", message))
     try:
-        reply = llm_service.chat(messages, system=system_prompt(profile, node, snippets))
+        reply = clean_reply(llm_service.chat(messages, system=system_prompt(profile, node, snippets)))
         return {"reply": reply, "sources": sources, "llm_used": True,
                 "provider": llm_service.used_provider or llm_service.provider()}
     except LLMError as exc:

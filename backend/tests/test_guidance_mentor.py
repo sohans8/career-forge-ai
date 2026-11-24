@@ -141,6 +141,12 @@ def test_retired_model_is_replaced_automatically(monkeypatch):
     assert calls == ["gemini-2.0-flash", "gemini-9.9-flash", "gemini-9.9-flash"]  # remembered, no second failure
 
 
+def test_mentor_strips_model_citation_marks():
+    from backend.app.services.mentor_service import clean_reply
+    assert clean_reply("DSE is lateral entry【1†L1-L8】【2†L1-L4】.") == "DSE is lateral entry."
+    assert clean_reply("Plain answer [1].") == "Plain answer [1]."
+
+
 def test_pick_model_prefers_current_general_chat_models():
     from backend.app.services.llm_service import pick_model
     gemini = ["gemini-2.5-flash", "gemini-3.8-flash", "gemini-3.8-flash-lite", "gemini-3.8-pro", "text-embedding-004",
