@@ -46,7 +46,7 @@ Explore every route, find AICTE colleges, ask questions and get your resume ATS-
     </td>
     <td width="50%" valign="top">
       <h3>🤖 Ask the AI Mentor</h3>
-      <p>Ask about any step and get an answer based on your profile and official policy notes, with the sources listed. It works without an API key and gives fuller answers once you add one.</p>
+      <p>Ask about any step and get an answer based on your profile and official policy notes, with the sources listed. Powered by Gemini, with Groq as a backup.</p>
     </td>
   </tr>
   <tr>
@@ -107,35 +107,13 @@ Explore every route, find AICTE colleges, ask questions and get your resume ATS-
 > [!NOTE]
 > The API runs on Render's free plan. It sleeps after about 15 minutes without visitors, so the first visit after that can take up to a minute. After that it is fast.
 
-## 🔑 Turn on AI answers
+## 🤖 AI under the hood
 
-The app works without any key. Adding **one** AI key makes the Mentor and resume rewrites smarter. You only need one of these:
+The AI Mentor and resume rewrites use **Google Gemini**, with **Groq** as an automatic backup.
 
-| Provider | Cost | Get a key | Variable name |
-|---|---|---|---|
-| **Google Gemini** (recommended) | Free tier | [aistudio.google.com/apikey](https://aistudio.google.com/apikey) | `GEMINI_API_KEY` |
-| **Groq** | Free tier | [console.groq.com/keys](https://console.groq.com/keys) | `GROQ_API_KEY` |
-| **OpenAI** | Paid | [platform.openai.com/api-keys](https://platform.openai.com/api-keys) | `OPENAI_API_KEY` |
-
-**On the live site (Render):**
-
-1. Create a key with one of the links above and copy it.
-2. Open [dashboard.render.com](https://dashboard.render.com) and click the **career-copilot-api** service.
-3. In the left menu, click **Environment**.
-4. Click **Add Environment Variable**. Enter the variable name from the table (for example `GEMINI_API_KEY`) as the key, and paste your key as the value.
-5. Click **Save, rebuild, and deploy**. Wait until the deploy shows **Live** (about 2 to 4 minutes).
-6. Open [/api/status](https://career-copilot-api-lw76.onrender.com/api/status). You should see `"configured": true` and your provider's name.
-
-**On your own computer:**
-
-1. Copy `.env.example` in the project folder to `backend/.env`.
-2. Open `backend/.env` and paste your key after the matching name, for example `GEMINI_API_KEY=your-key-here`.
-3. Restart the backend.
-
-**For the weekly data update (optional):** on GitHub, go to **Settings → Secrets and variables → Actions → New repository secret**, then add the same name and key.
-
-> [!WARNING]
-> Keep keys secret. Never put a key in the code, the README, a screenshot or a chat. `.env` files are already ignored by git.
+- **Always answers:** if one provider is busy or down, the next one takes over. If a model is retired, the app switches to a current one by itself.
+- **Grounded:** every answer is built from the student's profile, the roadmap step and official policy notes, and lists its sources.
+- **Works offline too:** with no AI available, the Mentor still answers from the built-in knowledge base.
 
 ## 🚀 Run it on your computer
 
@@ -155,7 +133,7 @@ npm install
 npm run dev
 ```
 
-Open **http://localhost:5173**. All data is already in the repo, so nothing else needs downloading.
+Open **http://localhost:5173**. All data is already in the repo, so nothing else needs downloading. To use AI locally, copy `.env.example` to `backend/.env` and add a key (see *All settings* below).
 
 ## 🧠 How it works
 
@@ -167,7 +145,7 @@ flowchart LR
   B --> E[(🎯 O*NET careers)]
   B --> F[(📄 Resume skill bank)]
   B --> G[(📚 Policy documents)]
-  B -.optional.-> H[🤖 Gemini / Groq / OpenAI]
+  B --> H[🤖 Gemini, Groq as backup]
 ```
 
 - **Roadmap:** a checked JSON graph of education steps, each linked to its official source.
@@ -228,11 +206,13 @@ Try them live at [/docs](https://career-copilot-api-lw76.onrender.com/docs).
 
 <br />
 
+Set these on your host (for example Render → Environment) or in `backend/.env` for local use. Keys are never stored in the repo.
+
 | Name | Default | What it does |
 |---|---|---|
-| `GEMINI_API_KEY` | not set | Google Gemini key |
-| `GROQ_API_KEY` | not set | Groq key |
-| `OPENAI_API_KEY` | not set | OpenAI key |
+| `GEMINI_API_KEY` | not set | Google Gemini key ([get one](https://aistudio.google.com/apikey), free tier) |
+| `GROQ_API_KEY` | not set | Groq key ([get one](https://console.groq.com/keys), free tier) |
+| `OPENAI_API_KEY` | not set | OpenAI key ([get one](https://platform.openai.com/api-keys), paid) |
 | `LLM_PROVIDER` | `auto` | `auto` uses the first key it finds. Set `gemini`, `groq` or `openai` to choose one |
 | `GEMINI_MODEL` | `gemini-2.0-flash` | Starting Gemini model. If the provider retires it, the app switches to a current one automatically |
 | `GROQ_MODEL` | `llama-3.3-70b-versatile` | Groq model |
