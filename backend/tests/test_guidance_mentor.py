@@ -83,6 +83,43 @@ def test_mentor_uses_llm_when_configured(client, monkeypatch):
     assert "Class 10 student" in seen["system"] and "official portal" in seen["system"]
 
 
+def _http_error(status, message):
+    import httpx
+    req = httpx.Request("POST", "https://example.test")
+    resp = httpx.Response(status, json={"error": {"message": message}}, request=req)
+    return httpx.HTTPStatusError("boom", request=req, response=resp)
+
+
+def test_llm_falls_back_to_next_provider(monkeypatch):
+    from backend.app.services import llm_service as mod
+    monkeypatch.setenv("GEMINI_API_KEY", "AIzaFAKEKEY1234567890")
+    monkeypatch.setenv("GROQ_API_KEY", "gsk_fake")
+    svc = mod.LLMService()
+
+    def bad_gemini(*a, **k):
+        raise _http_error(400, "API key not valid AIzaFAKEKEY1234567890")
+
+    monkeypatch.setattr(svc, "_gemini", bad_gemini)
+    monkeypatch.setattr(svc, "_openai_compatible", lambda provider, *a, **k: f"answer from {provider}")
+    assert svc.candidates() == ["gemini", "groq"]
+    assert svc.chat([mod.Message("user", "hi")]) == "answer from groq"
+    assert svc.used_provider == "groq"
+    assert "gemini: HTTP 400" in svc.last_error and "AIza" not in svc.last_error  # key never leaks
+
+
+def test_llm_all_providers_fail_gives_offline_answer(client, monkeypatch):
+    from backend.app.services import llm_service as mod
+    monkeypatch.setenv("GEMINI_API_KEY", "AIzaFAKE")
+
+    def bad(*a, **k):
+        raise _http_error(404, "model not found")
+
+    monkeypatch.setattr(mod.LLMService, "_gemini", bad)
+    b = client.post("/api/mentor/chat", json={"message": "What is DSE?", "node_id": "ad_dse"}).json()
+    assert b["llm_used"] is False and "did not respond" in b["reply"] and "no LLM API key" not in b["reply"]
+    assert "gemini: HTTP 404" in client.get("/api/status").json()["llm"]["last_error"]
+
+
 def test_status_and_health(client):
     assert client.get("/api/v1/health").json() == {"status": "ok"}
     s = client.get("/api/status").json()

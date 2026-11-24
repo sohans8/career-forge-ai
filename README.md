@@ -12,7 +12,7 @@ Explore every route, find AICTE colleges, ask questions and get your resume ATS-
 
 <a href="https://career-forge-ai-yprq.netlify.app/"><img src="https://img.shields.io/badge/Open_the_app-4f46e5?style=for-the-badge&logo=netlify&logoColor=white" alt="Open the app" /></a>
 &nbsp;
-<a href="https://career-copilot-api-9591.onrender.com/docs"><img src="https://img.shields.io/badge/API_docs-0f172a?style=for-the-badge&logo=swagger&logoColor=white" alt="API docs" /></a>
+<a href="https://career-copilot-api-lw76.onrender.com/docs"><img src="https://img.shields.io/badge/API_docs-0f172a?style=for-the-badge&logo=swagger&logoColor=white" alt="API docs" /></a>
 &nbsp;
 <a href="docs/ARCHITECTURE.md"><img src="https://img.shields.io/badge/Architecture-f97316?style=for-the-badge&logo=readthedocs&logoColor=white" alt="Architecture" /></a>
 
@@ -23,7 +23,7 @@ Explore every route, find AICTE colleges, ask questions and get your resume ATS-
 ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-0ea5e9?logo=tailwindcss&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white)
 ![Python](https://img.shields.io/badge/Python_3.11-3776AB?logo=python&logoColor=white)
-![Tests](https://img.shields.io/badge/tests-42_passing-22c55e)
+![Tests](https://img.shields.io/badge/tests-44_passing-22c55e)
 ![AI](https://img.shields.io/badge/AI-Gemini_%7C_Groq_%7C_OpenAI-8b5cf6)
 
 <br />
@@ -98,9 +98,9 @@ Explore every route, find AICTE colleges, ask questions and get your resume ATS-
 |---|---|
 | 🌐 **App (Netlify)** | https://career-forge-ai-yprq.netlify.app/ |
 | 🌐 **App (GitHub Pages)** | https://sohans8.github.io/career-forge-ai/ |
-| ⚙️ **API** | https://career-copilot-api-9591.onrender.com |
-| 📘 **API docs** | https://career-copilot-api-9591.onrender.com/docs |
-| ❤️ **Health check** | https://career-copilot-api-9591.onrender.com/api/v1/health |
+| ⚙️ **API** | https://career-copilot-api-lw76.onrender.com |
+| 📘 **API docs** | https://career-copilot-api-lw76.onrender.com/docs |
+| ❤️ **Health check** | https://career-copilot-api-lw76.onrender.com/api/v1/health |
 
 > [!NOTE]
 > The API runs on Render's free plan. It sleeps after about 15 minutes without visitors, so the first visit after that can take up to a minute. After that it is fast.
@@ -122,7 +122,7 @@ The app works without any key. Adding **one** AI key makes the Mentor and resume
 3. In the left menu, click **Environment**.
 4. Click **Add Environment Variable**. Enter the variable name from the table (for example `GEMINI_API_KEY`) as the key, and paste your key as the value.
 5. Click **Save, rebuild, and deploy**. Wait until the deploy shows **Live** (about 2 to 4 minutes).
-6. Open [/api/status](https://career-copilot-api-9591.onrender.com/api/status). You should see `"configured": true` and your provider's name.
+6. Open [/api/status](https://career-copilot-api-lw76.onrender.com/api/status). You should see `"configured": true` and your provider's name.
 
 **On your own computer:**
 
@@ -202,7 +202,7 @@ Pharmacy colleges are approved by the Pharmacy Council of India, not AICTE, so t
 
 <br />
 
-Try them live at [/docs](https://career-copilot-api-9591.onrender.com/docs).
+Try them live at [/docs](https://career-copilot-api-lw76.onrender.com/docs).
 
 | Method | Path | What it does |
 |---|---|---|
@@ -269,7 +269,7 @@ python -m backend.scripts.update_education_data --apply backend/data/staged_patc
 <br />
 
 ```bash
-python -m pytest backend/tests -q     # 42 tests, no internet or keys needed
+python -m pytest backend/tests -q     # 44 tests, no internet or keys needed
 cd frontend && npm run build
 ```
 
@@ -288,7 +288,7 @@ backend/
   data/       datasets and schema
   scripts/    data building, checking and the weekly watcher
   ml/         Class 10 stream recommender model
-  tests/      42 tests
+  tests/      44 tests
 frontend/src/
   pages/      Dashboard, Roadmap, Mentor, Resume
   components/ Wizard, chat, sidebar, header

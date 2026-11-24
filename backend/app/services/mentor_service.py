@@ -52,8 +52,12 @@ def system_prompt(profile: dict, node: dict | None, snippets: list[dict]) -> str
     )
 
 
-def _offline_reply(question: str, node: dict | None, snippets: list[dict]) -> str:
-    parts = ["AI Mentor is running in offline mode (no LLM API key configured), so this answer comes from the local knowledge base."]
+def _offline_reply(question: str, node: dict | None, snippets: list[dict], reason: str = "no_key") -> str:
+    intro = {
+        "no_key": "AI Mentor is running in offline mode (no LLM API key configured), so this answer comes from the local knowledge base.",
+        "provider_failed": "The AI service did not respond just now, so this answer comes from the local knowledge base. Please try again in a minute.",
+    }[reason]
+    parts = [intro]
     if node:
         parts.append(f"**{node['title']}**: {node['duration']}. Eligibility: {node['eligibility']}. "
                      f"Entrance routes: {', '.join(node['entrance_exams']) or 'none'}. Typical roles: {', '.join(node['top_branches_or_roles'][:5])}.")
@@ -76,8 +80,9 @@ def chat(message: str, history: list[dict], profile: dict, node_id: str | None =
     messages.append(Message("user", message))
     try:
         reply = llm_service.chat(messages, system=system_prompt(profile, node, snippets))
-        return {"reply": reply, "sources": sources, "llm_used": True, "provider": llm_service.provider()}
+        return {"reply": reply, "sources": sources, "llm_used": True,
+                "provider": llm_service.used_provider or llm_service.provider()}
     except LLMError as exc:
         log.warning("Mentor LLM failure: %s", exc)
-        return {"reply": _offline_reply(message, node, snippets) + "\n\n(The AI provider did not respond, so this is the offline answer.)",
-                "sources": sources, "llm_used": False, "provider": llm_service.provider()}
+        return {"reply": _offline_reply(message, node, snippets, reason="provider_failed"),
+                "sources": sources, "llm_used": False, "provider": None}

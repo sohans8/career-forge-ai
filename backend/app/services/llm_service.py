@@ -52,17 +52,39 @@ class LLMService:
         p = self.provider()
         return {"gemini": settings.gemini_model, "groq": settings.groq_model, "openai": settings.openai_model}.get(p or "")
 
+    last_error: str | None = None  # short, key-free description of the most recent failure
+
+    def candidates(self) -> list[str]:
+        """Configured providers in the order they are tried: the chosen one first, then the others."""
+        keys = {"gemini": settings.gemini_api_key, "groq": settings.groq_api_key, "openai": settings.openai_api_key}
+        first = self.provider()
+        rest = [p for p, k in keys.items() if k and p != first]
+        return ([first] if first else []) + rest
+
     def chat(self, messages: list[Message], system: str = "", json_mode: bool = False, temperature: float = 0.4) -> str:
-        provider = self.provider()
-        if provider is None:
+        providers = self.candidates()
+        if not providers:
             raise LLMError("No LLM API key configured")
-        try:
-            if provider == "gemini":
-                return self._gemini(messages, system, json_mode, temperature)
-            return self._openai_compatible(provider, messages, system, json_mode, temperature)
-        except httpx.HTTPError as exc:
-            log.warning("LLM request failed: %s", type(exc).__name__)
-            raise LLMError(f"{provider} request failed") from exc
+        errors = []
+        for provider in providers:  # fall back to the next configured provider on failure
+            try:
+                if provider == "gemini":
+                    text = self._gemini(messages, system, json_mode, temperature)
+                else:
+                    text = self._openai_compatible(provider, messages, system, json_mode, temperature)
+                self.used_provider = provider
+                self.last_error = "; ".join(errors) or None  # earlier providers that failed, if any
+                return text
+            except httpx.HTTPStatusError as exc:
+                detail = _error_detail(exc.response)
+                errors.append(f"{provider}: HTTP {exc.response.status_code}{' ' + detail if detail else ''}")
+            except (httpx.HTTPError, LLMError) as exc:
+                errors.append(f"{provider}: {type(exc).__name__}")
+            log.warning("LLM provider failed: %s", errors[-1])
+        self.last_error = "; ".join(errors)
+        raise LLMError(self.last_error)
+
+    used_provider: str | None = None
 
     def chat_json(self, prompt: str, system: str = "") -> dict:
         """Ask for a JSON object and parse it defensively."""
@@ -102,6 +124,17 @@ class LLMService:
             return r.json()["choices"][0]["message"]["content"]
         except (KeyError, IndexError) as exc:
             raise LLMError("Unexpected response") from exc
+
+
+def _error_detail(response: httpx.Response) -> str:
+    """Provider error message without secrets (providers never echo the key back)."""
+    try:
+        err = response.json().get("error", {})
+        msg = err.get("message", "") if isinstance(err, dict) else str(err)
+    except ValueError:
+        msg = ""
+    msg = re.sub(r"(AIza|gsk_|sk-)[A-Za-z0-9_\-]+", "[key]", msg)
+    return msg[:160]
 
 
 def parse_json_object(text: str) -> dict:

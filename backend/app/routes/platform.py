@@ -145,5 +145,6 @@ def status():
         "careers": len(guidance_service.careers()),
         "resume_roles": len(resume_service.skill_bank.roles()),
         "rag": rag_service.stats(),
-        "llm": {"configured": llm_service.available, "provider": llm_service.provider(), "model": llm_service.model_name()},
+        "llm": {"configured": llm_service.available, "provider": llm_service.provider(), "model": llm_service.model_name(),
+                "providers": llm_service.candidates(), "last_error": llm_service.last_error},
     }

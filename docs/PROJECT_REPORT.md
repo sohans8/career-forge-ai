@@ -4,7 +4,7 @@
 **Version:** 1.0.0 (Phase 1)  
 **Repository:** https://github.com/sohans8/AI-career-copilot-major-  
 **Branch:** feature/backend-api  
-**Live Backend:** https://career-copilot-api-9591.onrender.com  
+**Live Backend:** https://career-copilot-api-lw76.onrender.com  
 **Date:** September 2026  
 
 ---
@@ -98,7 +98,7 @@ BROWSER (localhost:5173 or Netlify)
          │  Axios HTTP (60s timeout)
          ▼
 RENDER BACKEND
-https://career-copilot-api-9591.onrender.com
+https://career-copilot-api-lw76.onrender.com
          │
          │  FastAPI + Uvicorn
          │  POST /api/v1/recommend
@@ -417,7 +417,7 @@ App.jsx
 - Live search by career name or description
 
 ### API Client (`services/api.js`)
-- Base URL: `https://career-copilot-api-9591.onrender.com` (from env var or hardcoded default)
+- Base URL: `https://career-copilot-api-lw76.onrender.com` (from env var or hardcoded default)
 - Timeout: 60,000ms (to handle Render cold starts)
 - Endpoints: `GET /api/v1/health`, `POST /api/v1/recommend`
 
@@ -428,7 +428,7 @@ App.jsx
 ### Backend — Render
 
 - Platform: Render (free tier)
-- URL: `https://career-copilot-api-9591.onrender.com`
+- URL: `https://career-copilot-api-lw76.onrender.com`
 - Start command: `uvicorn backend.app.main:app --host 0.0.0.0 --port 8000`
 - CORS: `allow_origins=["*"]`
 - Cold start: up to 60 seconds after inactivity (free tier limitation)
@@ -446,7 +446,7 @@ App.jsx
   ```
 - Node.js version: 20
 - SPA redirect: All routes → `index.html` (status 200)
-- Environment variable: `VITE_API_BASE_URL=https://career-copilot-api-9591.onrender.com`
+- Environment variable: `VITE_API_BASE_URL=https://career-copilot-api-lw76.onrender.com`
 
 ### Local Development
 
@@ -496,7 +496,7 @@ python -m uvicorn backend.app.main:app --reload --host 127.0.0.1 --port 8000
 3. **Hybrid recommendation engine** — Rule + ML with adaptive weights
 4. **Robustness analysis** — 4 noise levels × 3 systems + 25 edge cases
 5. **Complete UI redesign** — Glassmorphism, animations, step form, results ring
-6. **Backend deployed** to Render (live at career-copilot-api-9591.onrender.com)
+6. **Backend deployed** to Render (live at career-copilot-api-lw76.onrender.com)
 7. **Frontend configured** for Netlify deployment
 8. **README** — Full accurate documentation
 9. **docs/ folder** — Architecture, project info, screenshots
@@ -507,7 +507,7 @@ python -m uvicorn backend.app.main:app --reload --host 127.0.0.1 --port 8000
 
 ### Base URL
 ```
-https://career-copilot-api-9591.onrender.com
+https://career-copilot-api-lw76.onrender.com
 ```
 
 ### GET /api/v1/health
