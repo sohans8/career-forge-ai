@@ -10,7 +10,7 @@ Explore every route, find AICTE colleges, ask questions and get your resume ATS-
 
 <br />
 
-<a href="https://sohans8.github.io/career-forge-ai/"><img src="https://img.shields.io/badge/Open_the_app-4f46e5?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Open the app" /></a>
+<a href="https://career-forge-ai-yprq.netlify.app/"><img src="https://img.shields.io/badge/Open_the_app-4f46e5?style=for-the-badge&logo=netlify&logoColor=white" alt="Open the app" /></a>
 &nbsp;
 <a href="https://career-copilot-api-9591.onrender.com/docs"><img src="https://img.shields.io/badge/API_docs-0f172a?style=for-the-badge&logo=swagger&logoColor=white" alt="API docs" /></a>
 &nbsp;
@@ -96,7 +96,8 @@ Explore every route, find AICTE colleges, ask questions and get your resume ATS-
 
 | | Link |
 |---|---|
-| 🌐 **App** | https://sohans8.github.io/career-forge-ai/ |
+| 🌐 **App (Netlify)** | https://career-forge-ai-yprq.netlify.app/ |
+| 🌐 **App (GitHub Pages)** | https://sohans8.github.io/career-forge-ai/ |
 | ⚙️ **API** | https://career-copilot-api-9591.onrender.com |
 | 📘 **API docs** | https://career-copilot-api-9591.onrender.com/docs |
 | ❤️ **Health check** | https://career-copilot-api-9591.onrender.com/api/v1/health |
@@ -251,7 +252,8 @@ Try them live at [/docs](https://career-copilot-api-9591.onrender.com/docs).
 | Tests, data checks and build | Every push | `.github/workflows/ci.yml` |
 | Education notice watcher | Every Monday | `.github/workflows/auto_sync_education.yml` |
 | Backend deploy to Render | Every push | `render.yaml` |
-| Frontend on GitHub Pages | Served from the `gh-pages` branch | Build with `npx vite build --base=/career-forge-ai/` |
+| Frontend on Netlify | Every push | `netlify.toml` |
+| Frontend on GitHub Pages (mirror) | Served from the `gh-pages` branch | Build with `npx vite build --base=/career-forge-ai/` |
 
 The watcher never changes live data by itself. It saves proposed changes as `pending` and opens a pull request. After review, a patch is applied with:
 

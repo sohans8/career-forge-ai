@@ -2,9 +2,9 @@
 
 ## Overview
 
-Career Forge AI is a React single-page app (GitHub Pages, `gh-pages` branch) talking to a FastAPI service (Render). The backend keeps all reference data as files in `backend/data/` and loads them into memory on first use. There is no database. A weekly GitHub Actions job keeps the education data current through reviewed pull requests.
+Career Forge AI is a React single-page app (Netlify, with a GitHub Pages mirror on the `gh-pages` branch) talking to a FastAPI service (Render). The backend keeps all reference data as files in `backend/data/` and loads them into memory on first use. There is no database. A weekly GitHub Actions job keeps the education data current through reviewed pull requests.
 
-Live: frontend https://sohans8.github.io/career-forge-ai/, API https://career-copilot-api-9591.onrender.com (docs at `/docs`, health at `/api/v1/health`).
+Live: frontend https://career-forge-ai-yprq.netlify.app/ (mirror: https://sohans8.github.io/career-forge-ai/), API https://career-copilot-api-9591.onrender.com (docs at `/docs`, health at `/api/v1/health`).
 
 ```
 ┌──────────────────────────── Browser (React 18 + Vite + Tailwind) ────────────────────────────┐
@@ -112,7 +112,8 @@ No change reaches `roadmaps_india.json` without a human approving it in a pull r
 
 | Part | Host | Build | Run |
 |---|---|---|---|
-| Frontend | GitHub Pages (`gh-pages` branch). `netlify.toml` is kept as an alternative | `npx vite build --base=/career-forge-ai/` in `frontend/` | static files, `404.html` copy of `index.html` |
+| Frontend | Netlify (`netlify.toml`, Node 20), redeploys on push | `npm run build` in `frontend/` | static `dist/`, SPA redirect to `index.html` |
+| Frontend mirror | GitHub Pages (`gh-pages` branch) | `npx vite build --base=/career-forge-ai/` in `frontend/` | static files, `404.html` copy of `index.html` |
 | Backend | Render free tier (`render.yaml`, Python 3.11.9 from `.python-version`) | `pip install -r backend/requirements.txt` | `python -m uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT`, health check `/api/v1/health` |
 
 The derived datasets are committed, so no data fetch happens at deploy time. The RAG index is built on the first mentor request after a deploy. Render's free tier sleeps when idle, so the first request can take 30 to 60 seconds.
